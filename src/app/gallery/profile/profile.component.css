@@ -1,0 +1,235 @@
+/* ── Section header ──────────────────────────────────────── */
+.team-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 0.5rem 0 0.25rem;
+}
+
+.section-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+  color: #555;
+  text-transform: uppercase;
+}
+/* ── Main 3-column row ──────────────────────────────── */
+.profile-main {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  padding: 1rem 0;
+  border-top: 3px solid #3AAA64;
+}
+
+.profile-left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.profile-center {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.profile-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* ── Stats grid: 4 cols, 2 rows ─────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(90px, 1fr));
+  gap: 0.6rem;
+}
+
+/* ── Trophies & Awards on the same row ──────────────── */
+.trophies-awards-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+}
+
+.seasons-block {
+  margin-top: 0.25rem;
+}
+
+.full-width-block {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* ── Stadium & Strips row ───────────────────────────── */
+.profile-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* ── Charts row ─────────────────────────────────────── */
+.profile-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.profile-charts .card {
+  min-width: 0;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .profile-main {
+    grid-template-columns: 1fr;
+  }
+  .profile-left,
+  .profile-right {
+    justify-content: center;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .profile-bottom,
+  .profile-charts {
+    grid-template-columns: 1fr;
+  }
+}
+#profile img {
+  max-width: 100%;
+}
+
+.profile-section .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  padding: 10px 0;
+  border-top: 3px solid #3AAA64;
+}
+
+.team-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#points-chart,
+#positions-chart {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.seasons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.temporada {
+  border: 1px solid;
+  margin: 5px 5px 0 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  background: #000;
+  color: #FFF;
+  font-size: 0.7rem;
+}
+
+.puntajes {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.puntajes .numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: 2rem;
+  border: 1px solid;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.cup-icon {
+  height: 30px;
+  position: relative;
+  top: -4px;
+}
+
+.profile-trophy {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.fa-arrow-up,
+.fa-arrow-down {
+  color: #00F;
+}
+
+.stadium {
+  border-radius: 10px;
+  max-height: 300px;
+  min-height: 300px;
+  max-width: 100%;
+}
+
+.strips-block .strips-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.strip {
+  max-height: 300px;
+  flex-shrink: 0;
+}
+
+.info-title {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.profile-shield {
+  max-height: 260px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.profile-player {
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.trophies-container,
+.awards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}

@@ -1,0 +1,140 @@
+
+<section id="profile" class="profile-section">
+  @if (player) {
+
+    <!-- Team name: full width top -->
+    <h3 class="team-title">{{ player.team }}</h3>
+
+    <!-- Main 3-column row -->
+    <div class="profile-main">
+
+      <!-- Col 1: Shield -->
+      <div class="profile-left">
+        <img class="profile-shield"
+             [src]="'/assets/img/shields/300/' + player.images.shield"
+             [title]="player.team"
+             [alt]="player.team">
+      </div>
+
+      <!-- Col 2: Stats, Participations, Trophies & Awards -->
+      <div class="profile-center">
+        <p class="section-label">RESUMEN TEMPORADA</p>
+        <div class="stats-grid">
+          <div class="puntajes">
+            <div class="numero">{{ player.score_general }}</div>
+            <span>pts totales</span>
+          </div>
+          <div class="puntajes">
+            <div class="numero">{{ player.score_best }}</div>
+            <span>pts máx</span>
+          </div>
+          <div class="puntajes">
+            <div class="numero">
+              <img src="/assets/img/cups/liga.png" class="cup-icon"> {{ player.top_clasificacion }}
+            </div>
+            <span>jor líder</span>
+          </div>
+          <div class="puntajes">
+            <div class="numero"><i class="fas fa-medal"></i> {{ player.top_jornada }}</div>
+            <span>jor ganadas</span>
+          </div>
+          <div class="puntajes">
+            <div class="numero"><i class="fas fa-arrow-up"></i> {{ player.positions_general_min || 0 }}</div>
+            <span>mejor pos</span>
+          </div>
+          <div class="puntajes">
+            <div class="numero"><i class="fas fa-arrow-down"></i> {{ player.positions_general_max || 0 }}</div>
+            <span>peor pos</span>
+          </div>
+          <div class="puntajes">
+            <div class="numero"><i class="fas fa-chevron-up" style="color:#019700"></i> {{ player.positions_general_differences_max }}</div>
+            <span>máx subida</span>
+          </div>
+          <div class="puntajes">
+            <div class="numero"><i class="fas fa-chevron-down" style="color:#BE1501"></i> {{ player.positions_general_differences_min }}</div>
+            <span>máx caída</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Col 3: Player Photo -->
+      <div class="profile-right">
+        <img class="rounded-circle profile-player"
+             [src]="'/assets/img/players/' + player.images.profile"
+             [title]="player.name"
+             [alt]="player.name">
+      </div>
+    </div>
+
+    <!-- Full-width: Participations -->
+    <div class="seasons-block full-width-block">
+      <p class="section-label">PARTICIPACIONES: {{ player.seasons.length }} Temporadas</p>
+      <div class="seasons-container">
+        @for (temporada of player.seasons; track temporada) {
+          <span class="temporada">{{ temporada }}</span>
+        }
+      </div>
+    </div>
+
+    <!-- Full-width: Trophies & Awards side by side -->
+    <div class="trophies-awards-row full-width-block">
+      <div class="trophies-block">
+        <p class="section-label">TROFEOS: {{ player.trophies_total || 0 }} Títulos</p>
+        @if (player.trophies_total && player.trophies_total > 0) {
+          <div class="trophies-container">
+            @for (trofeo of getTrophies(); track trofeo.kind) {
+              <img [src]="'/assets/img/cups/' + trofeo.kind + '.png'"
+                   class="profile-trophy"
+                   [title]="trofeo.title"
+                   [alt]="trofeo.title">
+            }
+          </div>
+        }
+      </div>
+      <div class="awards-block">
+        <p class="section-label">LOGROS: {{ player.awards_total || 0 }} Distinciones</p>
+        @if (player.awards_total && player.awards_total > 0) {
+          <div class="awards-container">
+            @for (premio of getAwards(); track premio.title) {
+              <i [class]="premio.kind + ' fa-2x'" [title]="premio.title"></i>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Stadium & Strips row -->
+    <div class="profile-bottom">
+      <div class="stadium-block text-center">
+        <h4 class="info-title">ESTADIO</h4>
+        <img class="stadium"
+             [src]="'/assets/img/stadiums/' + player.images.stadium"
+             [alt]="player.team + ' stadium'">
+        <h6 class="mt-2">{{ player.stadium }}</h6>
+      </div>
+      <div class="strips-block text-center">
+        <h4 class="info-title">EQUIPACIÓN</h4>
+        <div class="strips-images">
+          <img class="strip"
+               [src]="'/assets/img/teamstrips/' + player.images.team_strip_front"
+               [alt]="player.team + ' strip front'">
+          <img class="strip"
+               [src]="'/assets/img/teamstrips/' + player.images.team_strip_back"
+               [alt]="player.team + ' strip back'">
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="profile-charts">
+      <div class="card">
+        <canvas #pointsChart id="points-chart"></canvas>
+      </div>
+      <div class="card">
+        <canvas #positionsChart id="positions-chart"></canvas>
+      </div>
+    </div>
+
+  }
+</section>

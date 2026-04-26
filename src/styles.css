@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-opium-light text-gray-800 antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-opacity-90 hover:shadow-card;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-opacity-90;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-card p-4 transition-shadow duration-200 hover:shadow-card-hover;
+  }
+
+  .card-header {
+    @apply bg-primary text-white rounded-t-xl px-4 py-3;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200;
+  }
+
+  .table-header {
+    @apply bg-secondary text-white px-4 py-3 text-left text-sm font-semibold;
+  }
+
+  .table-row {
+    @apply border-b border-gray-200 hover:bg-gray-50 transition-colors duration-150;
+  }
+
+  .table-cell {
+    @apply px-4 py-3 text-sm;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-gold {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .badge-silver {
+    @apply bg-gray-100 text-gray-800;
+  }
+
+  .badge-bronze {
+    @apply bg-orange-100 text-orange-800;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .gradient-accent {
+    @apply bg-gradient-to-r from-accent to-pink-500;
+  }
+}

@@ -1,0 +1,53 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-primary mb-8">Estadísticas y Gráficos</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Jornada Winner Chart -->
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-4 text-secondary">Ganadores de Jornada</h2>
+      <div class="h-64">
+        <canvas #jornadaWinnerChart id="jornada-winner-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Leader Chart -->
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-4 text-secondary">Jornadas como Líder</h2>
+      <div class="h-64">
+        <canvas #leaderChart id="leader-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Champions Chart -->
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-4 text-secondary">Jornadas en Champions</h2>
+      <div class="h-64">
+        <canvas #championsChart id="champions-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- UEFA Chart -->
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-4 text-secondary">Jornadas en UEFA</h2>
+      <div class="h-64">
+        <canvas #uefaChart id="uefa-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Intertoto Chart -->
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-4 text-secondary">Jornadas en Intertoto</h2>
+      <div class="h-64">
+        <canvas #intertotoChart id="intertoto-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Descenso Chart -->
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-4 text-secondary">Jornadas en Descenso</h2>
+      <div class="h-64">
+        <canvas #descensoChart id="descenso-chart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

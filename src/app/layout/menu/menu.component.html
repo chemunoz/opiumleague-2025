@@ -1,0 +1,69 @@
+<nav class="bg-white shadow-md rounded-lg p-4 sticky top-4 z-50">
+  <ul class="space-y-2">
+    <li>
+      <a [routerLink]="['/']" 
+         routerLinkActive="bg-accent text-white" 
+         [routerLinkActiveOptions]="{exact: true}"
+         class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+        <i class="fas fa-home w-5"></i>
+        <span>Home</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/table']" 
+         routerLinkActive="bg-accent text-white"
+         class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+        <i class="fas fa-table w-5"></i>
+        <span>Clasificación</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/charts']" 
+         routerLinkActive="bg-accent text-white"
+         class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+        <i class="fas fa-chart-area w-5"></i>
+        <span>Gráficos</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/competitions']" 
+         routerLinkActive="bg-accent text-white"
+         class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+        <i class="fas fa-trophy w-5"></i>
+        <span>Competiciones</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/news']" 
+         routerLinkActive="bg-accent text-white"
+         class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+        <i class="far fa-newspaper w-5"></i>
+        <span>Noticias</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/rules']" 
+         routerLinkActive="bg-accent text-white"
+         class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+        <i class="fas fa-file-alt w-5"></i>
+        <span>Reglamento</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/gallery']" 
+         routerLinkActive="bg-accent text-white"
+         class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+        <i class="fas fa-user-circle w-5"></i>
+        <span>Participantes</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/history']" 
+         routerLinkActive="bg-accent text-white"
+         class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+        <i class="fas fa-university w-5"></i>
+        <span>Historia</span>
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -8,6 +8,6 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {}

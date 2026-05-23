@@ -1,28 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
+interface CountdownEntry {
+  deadline: string;
+  element: string;
+  distance: number;
+}
 
 @Component({
   selector: 'app-cup',
   standalone: true,
   imports: [],
   templateUrl: './cup.component.html',
-  styleUrl: './cup.component.css'
+  styleUrl: './cup.component.css',
 })
-export class CupComponent implements OnInit {
-  FOCup: any[] = [];
+export class CupComponent {
+  FOCup: CountdownEntry[] = [];
 
   constructor() {
     this.FOCup = [
-      { // SORTEO
+      {
+        // SORTEO
         deadline: 'Oct 17, 2020 16:00:00',
         element: 'countdown-draw-FOCup',
-        distance: 0
+        distance: 0,
       },
-      { // COMIENZO
+      {
+        // COMIENZO
         deadline: 'Oct 23, 2020 21:00:00',
         element: 'countdown-FOCup',
-        distance: 0
-      }
+        distance: 0,
+      },
     ];
 
     const Competitions = [this.FOCup[0], this.FOCup[1]];
@@ -32,12 +39,14 @@ export class CupComponent implements OnInit {
       // Get todays date and time
       const now = new Date().getTime();
 
-      if (Competitions.length === 0) { clearInterval(x); }
+      if (Competitions.length === 0) {
+        clearInterval(x);
+      }
       Competitions.forEach((competition, index) => {
         // Find the distance between now an the count down date
         const countDownDate = new Date(competition.deadline).getTime();
         const distance = countDownDate - now;
-        let text = '';
+        let text: string;
 
         competition.distance = distance;
         if (distance < 0) {
@@ -47,20 +56,22 @@ export class CupComponent implements OnInit {
         } else {
           // Time calculations for days, hours, minutes and seconds
           const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60),
+          );
           const seconds = Math.floor((distance % (1000 * 60)) / 1000);
           text = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
 
         // Output the result validating that the element exists
         const el = document.getElementById(competition.element);
-        if (el !== null) { el.innerHTML = text; }
+        if (el !== null) {
+          el.innerHTML = text;
+        }
       });
     }, 1000);
   }
-
-  ngOnInit() {
-  }
-
 }

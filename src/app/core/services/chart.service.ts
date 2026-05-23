@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 
 Chart.register(...registerables);
@@ -46,12 +46,22 @@ export interface ChartOptions {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChartService {
-  private charts: Map<string, Chart> = new Map();
+  private charts = new Map<string, Chart>();
 
-  createLineChart(canvasId: string, labels: string[], datasets: { label: string; data: number[]; borderColor?: string; backgroundColor?: string }[], options?: ChartOptions): Chart {
+  createLineChart(
+    canvasId: string,
+    labels: string[],
+    datasets: {
+      label: string;
+      data: number[];
+      borderColor?: string;
+      backgroundColor?: string;
+    }[],
+    options?: ChartOptions,
+  ): Chart {
     const existingChart = this.charts.get(canvasId);
     if (existingChart) {
       existingChart.destroy();
@@ -71,14 +81,14 @@ export class ChartService {
       type: 'line',
       data: {
         labels,
-        datasets: datasets.map(ds => ({
+        datasets: datasets.map((ds) => ({
           label: ds.label,
           data: ds.data,
           borderColor: ds.borderColor || '#e94560',
           backgroundColor: ds.backgroundColor || 'rgba(233, 69, 96, 0.1)',
           fill: true,
-          tension: 0.4
-        }))
+          tension: 0.4,
+        })),
       },
       options: {
         responsive: options?.responsive ?? true,
@@ -86,31 +96,31 @@ export class ChartService {
         plugins: {
           legend: {
             display: options?.plugins?.legend?.display ?? true,
-            position: options?.plugins?.legend?.position ?? 'top'
+            position: options?.plugins?.legend?.position ?? 'top',
           },
           title: {
             display: options?.plugins?.title?.display ?? false,
-            text: options?.plugins?.title?.text ?? ''
-          }
+            text: options?.plugins?.title?.text ?? '',
+          },
         },
         scales: {
           x: {
             display: options?.scales?.x?.display ?? true,
             title: {
               display: options?.scales?.x?.title?.display ?? false,
-              text: options?.scales?.x?.title?.text ?? ''
-            }
+              text: options?.scales?.x?.title?.text ?? '',
+            },
           },
           y: {
             display: options?.scales?.y?.display ?? true,
             title: {
               display: options?.scales?.y?.title?.display ?? false,
-              text: options?.scales?.y?.title?.text ?? ''
+              text: options?.scales?.y?.title?.text ?? '',
             },
-            beginAtZero: options?.scales?.y?.beginAtZero ?? true
-          }
-        }
-      }
+            beginAtZero: options?.scales?.y?.beginAtZero ?? true,
+          },
+        },
+      },
     };
 
     const chart = new Chart(ctx, config);
@@ -118,7 +128,12 @@ export class ChartService {
     return chart;
   }
 
-  createBarChart(canvasId: string, labels: string[], datasets: ChartDataset[], options?: ChartOptions): Chart {
+  createBarChart(
+    canvasId: string,
+    labels: string[],
+    datasets: ChartDataset[],
+    options?: ChartOptions,
+  ): Chart {
     const existingChart = this.charts.get(canvasId);
     if (existingChart) {
       existingChart.destroy();
@@ -138,11 +153,11 @@ export class ChartService {
       type: 'bar',
       data: {
         labels,
-        datasets: datasets.map(ds => ({
+        datasets: datasets.map((ds) => ({
           label: ds.label,
           data: ds.data,
-          backgroundColor: ds.backgroundColor || '#e94560'
-        }))
+          backgroundColor: ds.backgroundColor || '#e94560',
+        })),
       },
       options: {
         responsive: options?.responsive ?? true,
@@ -150,19 +165,19 @@ export class ChartService {
         plugins: {
           legend: {
             display: options?.plugins?.legend?.display ?? true,
-            position: options?.plugins?.legend?.position ?? 'top'
-          }
+            position: options?.plugins?.legend?.position ?? 'top',
+          },
         },
         scales: {
           x: {
-            display: options?.scales?.x?.display ?? true
+            display: options?.scales?.x?.display ?? true,
           },
           y: {
             display: options?.scales?.y?.display ?? true,
-            beginAtZero: options?.scales?.y?.beginAtZero ?? true
-          }
-        }
-      }
+            beginAtZero: options?.scales?.y?.beginAtZero ?? true,
+          },
+        },
+      },
     };
 
     const chart = new Chart(ctx, config);
@@ -170,7 +185,12 @@ export class ChartService {
     return chart;
   }
 
-  createPieChart(canvasId: string, labels: string[], data: number[], colors?: string[]): Chart {
+  createPieChart(
+    canvasId: string,
+    labels: string[],
+    data: number[],
+    colors?: string[],
+  ): Chart {
     const existingChart = this.charts.get(canvasId);
     if (existingChart) {
       existingChart.destroy();
@@ -187,18 +207,28 @@ export class ChartService {
     }
 
     const defaultColors = [
-      '#e94560', '#16213e', '#0f3460', '#533483', '#e63946',
-      '#2a9d8f', '#e9c46a', '#f4a261', '#264653', '#6a0572'
+      '#e94560',
+      '#16213e',
+      '#0f3460',
+      '#533483',
+      '#e63946',
+      '#2a9d8f',
+      '#e9c46a',
+      '#f4a261',
+      '#264653',
+      '#6a0572',
     ];
 
     const config: ChartConfiguration = {
       type: 'pie',
       data: {
         labels,
-        datasets: [{
-          data,
-          backgroundColor: colors || defaultColors.slice(0, data.length)
-        }]
+        datasets: [
+          {
+            data,
+            backgroundColor: colors || defaultColors.slice(0, data.length),
+          },
+        ],
       },
       options: {
         responsive: true,
@@ -206,10 +236,10 @@ export class ChartService {
         plugins: {
           legend: {
             display: true,
-            position: 'right'
-          }
-        }
-      }
+            position: 'right',
+          },
+        },
+      },
     };
 
     const chart = new Chart(ctx, config);

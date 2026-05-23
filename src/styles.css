@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 @layer base {
@@ -18,7 +18,7 @@
   .btn-primary {
     @apply bg-accent text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-opacity-90 hover:shadow-card;
   }
-  
+
   .btn-secondary {
     @apply bg-secondary text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-opacity-90;
   }

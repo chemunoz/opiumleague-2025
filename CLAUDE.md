@@ -13,11 +13,13 @@ npm run lint       # Angular linter
 ```
 
 To run a single spec file:
+
 ```bash
 npx ng test --include='src/app/charts/charts.component.spec.ts'
 ```
 
 To generate a new standalone component:
+
 ```bash
 npx ng generate component feature/my-component
 ```
@@ -29,6 +31,7 @@ npx ng generate component feature/my-component
 ### Data flow
 
 All application data originates from two JSON files in `public/assets/data/`:
+
 - `data.json` — array of `Player` objects with raw `points[]` per jornada (round)
 - `champions.json` — Champions competition structure (groups, rounds, countdowns)
 
@@ -44,15 +47,15 @@ All routes use lazy-loaded standalone components (`loadComponent`). Routes are d
 
 ### Feature modules (by folder)
 
-| Folder | Routes |
-|---|---|
-| `home/` | `/` |
-| `table/` | `/table`, `/table-friends` |
-| `charts/` | `/charts` |
-| `competitions/` | `/competitions`, `/cup`, `/champions`, `/uefa`, `/supercup-europa`, `/supercup-spain`, `/supercup-opium` |
-| `gallery/` | `/gallery`, `/profile/:id` |
-| `news/`, `rules/`, `history/` | `/news`, `/rules`, `/history` |
-| `layout/` | Header and menu shared components |
+| Folder                        | Routes                                                                                                   |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `home/`                       | `/`                                                                                                      |
+| `table/`                      | `/table`, `/table-friends`                                                                               |
+| `charts/`                     | `/charts`                                                                                                |
+| `competitions/`               | `/competitions`, `/cup`, `/champions`, `/uefa`, `/supercup-europa`, `/supercup-spain`, `/supercup-opium` |
+| `gallery/`                    | `/gallery`, `/profile/:id`                                                                               |
+| `news/`, `rules/`, `history/` | `/news`, `/rules`, `/history`                                                                            |
+| `layout/`                     | Header and menu shared components                                                                        |
 
 ### Models (`src/app/core/models/`)
 
@@ -61,6 +64,7 @@ Key interfaces: `Player` (base data + computed stats), `TeamStanding`, `Jornada`
 ### Styling
 
 Tailwind with a custom dark theme palette defined in `tailwind.config.js`:
+
 - `primary`: `#1a1a2e`, `secondary`: `#16213e`, `accent`: `#e94560`
 - `opium-dark`: `#0f0f23`, `opium-light`: `#f8f9fa`
 

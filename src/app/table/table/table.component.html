@@ -3,23 +3,34 @@
 
   <!-- Tab bar -->
   <div class="tab-bar">
-    <button class="tab-btn" [class.active]="activeTab() === 'general'" (click)="setTab('general')">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab() === 'general'"
+      (click)="setTab('general')"
+    >
       <i class="fas fa-table"></i> Clasificación General
     </button>
-    <button class="tab-btn" [class.active]="activeTab() === 'hist-general'" (click)="setTab('hist-general')">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab() === 'hist-general'"
+      (click)="setTab('hist-general')"
+    >
       <i class="fas fa-clock"></i> Histórico General
     </button>
-    <button class="tab-btn" [class.active]="activeTab() === 'hist-jornada'" (click)="setTab('hist-jornada')">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab() === 'hist-jornada'"
+      (click)="setTab('hist-jornada')"
+    >
       <i class="fas fa-clock"></i> Histórico Jornadas
     </button>
   </div>
 
   @switch (activeTab()) {
-
     <!-- ══════════════════════════════════════════════════════════
          Tab 1: Clasificación General
     ══════════════════════════════════════════════════════════ -->
-    @case ('general') {
+    @case ("general") {
       @let jornada = lastJornada();
       @if (jornada) {
         <div class="table-responsive">
@@ -28,7 +39,9 @@
               <tr>
                 <th class="th-pos">Pos</th>
                 <th class="th-trend"></th>
-                <th class="th-team" colspan="2"><i class="fas fa-shield-alt"></i> Equipo</th>
+                <th class="th-team" colspan="2">
+                  <i class="fas fa-shield-alt"></i> Equipo
+                </th>
                 <th class="th-player"><i class="fas fa-user"></i> Jugador</th>
                 <th class="th-racha">Racha</th>
                 <th class="th-num">Jor.</th>
@@ -44,9 +57,14 @@
                   <td class="td-pos">{{ team.position_general }}</td>
                   <td class="td-trend">
                     @if (team.updown) {
-                      <i [class]="team.updown" [style.color]="trendColor(team.updown)"></i>
+                      <i
+                        [class]="team.updown"
+                        [style.color]="trendColor(team.updown)"
+                      ></i>
                       @if (team.updown_num && team.updown_num > 0) {
-                        <small [style.color]="trendColor(team.updown)"> {{ team.updown_num }}</small>
+                        <small [style.color]="trendColor(team.updown)">
+                          {{ team.updown_num }}</small
+                        >
                       } @else {
                         <small> 0</small>
                       }
@@ -54,15 +72,25 @@
                   </td>
                   <td class="td-shield">
                     <a [routerLink]="['/profile', team.id]">
-                      <img [src]="'/assets/img/shields/150/' + team.shield" class="table-shield" [alt]="team.team">
+                      <img
+                        [src]="'/assets/img/shields/150/' + team.shield"
+                        class="table-shield"
+                        [alt]="team.team"
+                      />
                     </a>
                   </td>
                   <td class="td-team">
-                    <a [routerLink]="['/profile', team.id]" class="team-link">{{ team.team }}</a>
+                    <a [routerLink]="['/profile', team.id]" class="team-link">{{
+                      team.team
+                    }}</a>
                   </td>
                   <td class="td-player">
                     <a [routerLink]="['/profile', team.id]" class="player-cell">
-                      <img [src]="'/assets/img/players/' + team.image" class="table-player-img" [alt]="team.name">
+                      <img
+                        [src]="'/assets/img/players/' + team.image"
+                        class="table-player-img"
+                        [alt]="team.name"
+                      />
                       {{ team.name }}
                     </a>
                   </td>
@@ -72,7 +100,9 @@
                     }
                   </td>
                   <td class="td-num">{{ team.num_jornadas }}</td>
-                  <td class="td-pts"><strong>{{ team.score_general }}</strong></td>
+                  <td class="td-pts">
+                    <strong>{{ team.score_general }}</strong>
+                  </td>
                   <td class="td-num">{{ team.score_best }}</td>
                   <td class="td-num">{{ team.score_worst }}</td>
                   <td class="td-num">{{ team.score_average }}</td>
@@ -87,7 +117,7 @@
     <!-- ══════════════════════════════════════════════════════════
          Tab 2: Histórico General
     ══════════════════════════════════════════════════════════ -->
-    @case ('hist-general') {
+    @case ("hist-general") {
       <h4 class="hist-title">HISTÓRICO GENERAL</h4>
       <div class="historic-scroll">
         @for (j of jornadas(); track j.key) {
@@ -108,10 +138,16 @@
                   <tr [class.mini-row-first]="team.position_general === 1">
                     <td>{{ team.position_general }}</td>
                     <td class="mini-team-cell">
-                      <img [src]="'/assets/img/shields/150/' + team.shield" class="mini-shield" [alt]="team.team">
+                      <img
+                        [src]="'/assets/img/shields/150/' + team.shield"
+                        class="mini-shield"
+                        [alt]="team.team"
+                      />
                       {{ team.team }}
                     </td>
-                    <td><strong>{{ team.score_general }}</strong></td>
+                    <td>
+                      <strong>{{ team.score_general }}</strong>
+                    </td>
                   </tr>
                 }
               </tbody>
@@ -124,7 +160,7 @@
     <!-- ══════════════════════════════════════════════════════════
          Tab 3: Histórico Jornadas
     ══════════════════════════════════════════════════════════ -->
-    @case ('hist-jornada') {
+    @case ("hist-jornada") {
       <h4 class="hist-title">HISTÓRICO DE JORNADAS</h4>
       <div class="historic-scroll">
         @for (j of jornadas(); track j.key) {
@@ -145,10 +181,16 @@
                   <tr [class.mini-row-first]="team.position_jornada === 1">
                     <td>{{ team.position_jornada }}</td>
                     <td class="mini-team-cell">
-                      <img [src]="'/assets/img/shields/150/' + team.shield" class="mini-shield" [alt]="team.team">
+                      <img
+                        [src]="'/assets/img/shields/150/' + team.shield"
+                        class="mini-shield"
+                        [alt]="team.team"
+                      />
                       {{ team.team }}
                     </td>
-                    <td><strong>{{ team.score_jornada }}</strong></td>
+                    <td>
+                      <strong>{{ team.score_jornada }}</strong>
+                    </td>
                   </tr>
                 }
               </tbody>
@@ -157,6 +199,5 @@
         }
       </div>
     }
-
   }
 </section>

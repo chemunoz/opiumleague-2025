@@ -44,7 +44,7 @@ export interface Player {
   awards: PlayerAwards;
   nationality: string;
   badges: PlayerBadges;
-  
+
   score_general?: number;
   score_jornada?: number[];
   positions_jornada?: number[];
@@ -89,6 +89,7 @@ export interface TeamStanding {
   score_worst?: number;
   score_average?: number;
   num_jornadas?: number;
+  positions_jornada?: number[];
 }
 
 export interface Jornada {

@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterViewInit, inject, ChangeDetectionStrategy, OnDestroy, ElementRef, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ChartService } from '../core/services/chart.service';
 
 @Component({
   selector: 'app-history',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './history.component.html',
   styleUrl: './history.component.css'

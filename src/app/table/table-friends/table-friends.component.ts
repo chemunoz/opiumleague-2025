@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { DataService } from '../../core/services/data.service';
 
 @Component({
   selector: 'app-table-friends',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   templateUrl: './table-friends.component.html',
   styleUrl: './table-friends.component.css'
 })

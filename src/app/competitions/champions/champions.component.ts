@@ -1,5 +1,5 @@
 import { Component, OnInit, inject, ChangeDetectionStrategy, signal, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { DataService } from '../../core/services/data.service';
 import { ChampionsService } from '../../core/services/champions.service';
@@ -36,7 +36,7 @@ interface TeamMatch {
 @Component({
   selector: 'app-champions',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './champions.component.html',
   styleUrl: './champions.component.css'

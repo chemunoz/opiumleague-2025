@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-supercup-spain',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './supercup-spain.component.html',
   styleUrl: './supercup-spain.component.css'
 })

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-uefa',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './uefa.component.html',
   styleUrl: './uefa.component.css'
 })

@@ -1,5 +1,5 @@
 import { Component, inject, ChangeDetectionStrategy, signal, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { DataService } from '../../core/services/data.service';
 import { TeamStanding } from '../../core/models';
@@ -19,7 +19,7 @@ interface JornadaEntry {
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'

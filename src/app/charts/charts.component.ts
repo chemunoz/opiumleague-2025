@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, inject, ChangeDetectionStrategy, signal, OnDestroy, ElementRef, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { DataService } from '../core/services/data.service';
 import { ChartService } from '../core/services/chart.service';
 import { Player } from '../core/models';
@@ -7,7 +7,7 @@ import { Player } from '../core/models';
 @Component({
   selector: 'app-charts',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.css'

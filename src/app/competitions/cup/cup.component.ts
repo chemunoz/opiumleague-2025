@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-cup',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './cup.component.html',
   styleUrl: './cup.component.css'
 })

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-rules',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './rules.component.html',
   styleUrl: './rules.component.css'
 })

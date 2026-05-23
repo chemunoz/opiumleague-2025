@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { ChampionsService } from '../../core/services/champions.service';
 
 @Component({
   selector: 'app-competitions',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   templateUrl: './competitions.component.html',
   styleUrl: './competitions.component.css'
 })

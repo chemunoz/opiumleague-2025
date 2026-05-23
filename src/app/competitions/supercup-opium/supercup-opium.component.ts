@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-supercup-opium',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './supercup-opium.component.html',
   styleUrl: './supercup-opium.component.css'
 })

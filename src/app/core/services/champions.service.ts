@@ -3,10 +3,16 @@ import championsJSON from '../../../../public/assets/data/champions.json';
 import { ChampionsGroup, ChampionsRound, ChampionsCountdown } from '../models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChampionsService {
-  private championsData = signal<{ groups: ChampionsGroup[]; rounds: ChampionsRound[]; countdowns: ChampionsCountdown[] }>(championsJSON as any);
+  private championsData = signal(
+    championsJSON as unknown as {
+      groups: ChampionsGroup[];
+      rounds: ChampionsRound[];
+      countdowns: ChampionsCountdown[];
+    },
+  );
 
   readonly groups = computed(() => this.championsData().groups);
   readonly rounds = computed(() => this.championsData().rounds);

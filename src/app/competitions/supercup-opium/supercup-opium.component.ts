@@ -1,23 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
+interface CountdownEntry {
+  deadline: string;
+  element: string;
+  distance: number;
+}
 
 @Component({
   selector: 'app-supercup-opium',
   standalone: true,
   imports: [],
   templateUrl: './supercup-opium.component.html',
-  styleUrl: './supercup-opium.component.css'
+  styleUrl: './supercup-opium.component.css',
 })
-export class SupercupOpiumComponent implements OnInit {
-  SupercupOpium: any[] = [];
+export class SupercupOpiumComponent {
+  SupercupOpium: CountdownEntry[] = [];
 
   constructor() {
     this.SupercupOpium = [
       {
         deadline: 'Jan 19, 2021 21:00:00',
         element: 'countdown-SupercupOpium',
-        distance: 0
-      }
+        distance: 0,
+      },
     ];
 
     const Competitions = [this.SupercupOpium[0]];
@@ -26,11 +31,13 @@ export class SupercupOpiumComponent implements OnInit {
     const x = setInterval(() => {
       const now = new Date().getTime();
 
-      if (Competitions.length === 0) { clearInterval(x); }
+      if (Competitions.length === 0) {
+        clearInterval(x);
+      }
       Competitions.forEach((competition, index) => {
         const countDownDate = new Date(competition.deadline).getTime();
         const distance = countDownDate - now;
-        let text = '';
+        let text: string;
 
         competition.distance = distance;
         if (distance < 0) {
@@ -38,18 +45,21 @@ export class SupercupOpiumComponent implements OnInit {
           Competitions.splice(index, 1);
         } else {
           const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60),
+          );
           const seconds = Math.floor((distance % (1000 * 60)) / 1000);
           text = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
 
         const el = document.getElementById(competition.element);
-        if (el !== null) { el.innerHTML = text; }
+        if (el !== null) {
+          el.innerHTML = text;
+        }
       });
     }, 1000);
   }
-
-  ngOnInit() {}
-
 }

@@ -10,9 +10,8 @@ describe('GalleryComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [GalleryComponent],
-      providers: [provideRouter([])]
-    })
-    .compileComponents();
+      providers: [provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(GalleryComponent);
     component = fixture.componentInstance;

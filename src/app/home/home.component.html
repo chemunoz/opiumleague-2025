@@ -2,17 +2,19 @@
 <div class="jumbotron">
   <section class="container-fluid">
     <div class="trans-background">XII OPIUM INFICAN VIAJES</div>
-    
+
     @if (countdownActive()) {
       <div id="countdowns" class="trans-background mt-3"></div>
     }
-    
+
     <div class="trans-background mt-3 py-3">
       @for (player of sortedPlayers(); track player.id) {
         <a [routerLink]="['/profile', player.id]">
-          <img class="shield" 
-               [src]="'/assets/img/shields/150/' + player.images.shield" 
-               [alt]="player.team"/>
+          <img
+            class="shield"
+            [src]="'/assets/img/shields/150/' + player.images.shield"
+            [alt]="player.team"
+          />
         </a>
       }
     </div>

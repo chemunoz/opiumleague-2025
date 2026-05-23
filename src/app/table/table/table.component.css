@@ -24,17 +24,19 @@
   border-bottom: 3px solid transparent;
   cursor: pointer;
   color: #555;
-  transition: color 0.15s, border-color 0.15s;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
   white-space: nowrap;
 }
 
 .tab-btn:hover {
-  color: #3AAA64;
+  color: #3aaa64;
 }
 
 .tab-btn.active {
-  color: #3AAA64;
-  border-bottom-color: #3AAA64;
+  color: #3aaa64;
+  border-bottom-color: #3aaa64;
 }
 
 /* ── General standings table ────────────────────────────────── */
@@ -63,26 +65,66 @@
 
 .standings-table td {
   padding: 0.4rem 0.5rem;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   vertical-align: middle;
   text-align: center;
 }
 
 /* Column sizing */
-.th-pos, .td-pos     { width: 32px; font-size: 1rem; font-weight: 700; }
-.th-trend, .td-trend { width: 42px; white-space: nowrap; }
-.th-team, .td-shield, .td-team { text-align: left; }
-.td-team             { min-width: 130px; }
-.th-player, .td-player { text-align: left; min-width: 130px; }
-.th-racha, .td-racha { min-width: 130px; white-space: nowrap; }
-.th-num, .td-num     { width: 56px; color: #444; }
-.th-pts, .td-pts     { width: 62px; font-size: 1rem; color: #1a7a3c; }
+.th-pos,
+.td-pos {
+  width: 32px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.th-trend,
+.td-trend {
+  width: 42px;
+  white-space: nowrap;
+}
+.th-team,
+.td-shield,
+.td-team {
+  text-align: left;
+}
+.td-team {
+  min-width: 130px;
+}
+.th-player,
+.td-player {
+  text-align: left;
+  min-width: 130px;
+}
+.th-racha,
+.td-racha {
+  min-width: 130px;
+  white-space: nowrap;
+}
+.th-num,
+.td-num {
+  width: 56px;
+  color: #444;
+}
+.th-pts,
+.td-pts {
+  width: 62px;
+  font-size: 1rem;
+  color: #1a7a3c;
+}
 
 /* Row zone colours (matching 2018 design) */
-.row-zone-a { background: #ffff00; }
-.row-zone-b { background: #ffa500; }
-.row-zone-a:hover { background: #ffe600; }
-.row-zone-b:hover { background: #ff9100; }
+.row-zone-a {
+  background: #ffff00;
+}
+.row-zone-b {
+  background: #ffa500;
+}
+.row-zone-a:hover {
+  background: #ffe600;
+}
+.row-zone-b:hover {
+  background: #ff9100;
+}
 .standings-table tbody tr:not(.row-zone-a):not(.row-zone-b):hover {
   background: #f0faf4;
 }
@@ -95,7 +137,9 @@
   margin-right: 4px;
   transition: transform 0.15s;
 }
-.table-shield:hover { transform: scale(1.15); }
+.table-shield:hover {
+  transform: scale(1.15);
+}
 
 /* Team link */
 .team-link {
@@ -103,7 +147,9 @@
   color: inherit;
   font-weight: 600;
 }
-.team-link:hover { color: #1a7a3c; }
+.team-link:hover {
+  color: #1a7a3c;
+}
 
 /* Player cell */
 .player-cell {
@@ -113,7 +159,9 @@
   text-decoration: none;
   color: inherit;
 }
-.player-cell:hover { color: #1a7a3c; }
+.player-cell:hover {
+  color: #1a7a3c;
+}
 
 .table-player-img {
   width: 32px;
@@ -138,8 +186,13 @@
 }
 
 /* Trend cell */
-.td-trend i   { font-size: 0.9rem; }
-.td-trend small { font-size: 0.75rem; font-weight: 700; }
+.td-trend i {
+  font-size: 0.9rem;
+}
+.td-trend small {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
 
 /* ── Historic tabs ──────────────────────────────────────────── */
 .hist-title {
@@ -166,7 +219,7 @@
   border-radius: 8px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .mini-card-header {
@@ -214,9 +267,12 @@
   margin-right: 4px;
 }
 
-.mini-row-first { background: #ffff00; }
-.mini-row-first:hover { background: #ffe600; }
-
+.mini-row-first {
+  background: #ffff00;
+}
+.mini-row-first:hover {
+  background: #ffe600;
+}
 
 /* ── Round stats bar ──────────────────────────────────────── */
 .round-stats {
@@ -244,7 +300,7 @@
 
 .round-stat-icon {
   font-size: 1.8rem;
-  color: #3AAA64;
+  color: #3aaa64;
 }
 
 .round-stat > div {
@@ -282,7 +338,7 @@
 }
 
 .standings-table thead tr {
-  background: #3AAA64;
+  background: #3aaa64;
   color: #fff;
   text-align: center;
 }
@@ -303,12 +359,24 @@
 }
 
 /* Podium highlight */
-.podium-1 { background: #fffbe6; }
-.podium-2 { background: #f5f5f5; }
-.podium-3 { background: #fff4eb; }
-.podium-1:hover { background: #fff5cc; }
-.podium-2:hover { background: #ebebeb; }
-.podium-3:hover { background: #ffe8d6; }
+.podium-1 {
+  background: #fffbe6;
+}
+.podium-2 {
+  background: #f5f5f5;
+}
+.podium-3 {
+  background: #fff4eb;
+}
+.podium-1:hover {
+  background: #fff5cc;
+}
+.podium-2:hover {
+  background: #ebebeb;
+}
+.podium-3:hover {
+  background: #ffe8d6;
+}
 
 .standings-table td {
   padding: 0.45rem 0.4rem;
@@ -317,13 +385,33 @@
 }
 
 /* Column widths */
-.col-pos   { width: 36px; font-weight: 700; font-size: 1rem; }
-.col-trend { width: 36px; font-size: 0.75rem; }
-.col-shield { width: 44px; }
-.col-team  { text-align: left; min-width: 160px; }
-.col-pts   { font-weight: 700; }
-.col-pts.total { font-size: 1.05rem; color: #3AAA64; }
-.col-num   { color: #555; font-size: 0.85rem; }
+.col-pos {
+  width: 36px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.col-trend {
+  width: 36px;
+  font-size: 0.75rem;
+}
+.col-shield {
+  width: 44px;
+}
+.col-team {
+  text-align: left;
+  min-width: 160px;
+}
+.col-pts {
+  font-weight: 700;
+}
+.col-pts.total {
+  font-size: 1.05rem;
+  color: #3aaa64;
+}
+.col-num {
+  color: #555;
+  font-size: 0.85rem;
+}
 
 .table-shield {
   height: 32px;
@@ -344,7 +432,7 @@
 }
 
 .team-link:hover strong {
-  color: #3AAA64;
+  color: #3aaa64;
 }
 
 .player-name {

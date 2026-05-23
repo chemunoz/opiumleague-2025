@@ -8,9 +8,8 @@ describe('SupercupEuropaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SupercupEuropaComponent]
-    })
-    .compileComponents();
+      imports: [SupercupEuropaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SupercupEuropaComponent);
     component = fixture.componentInstance;

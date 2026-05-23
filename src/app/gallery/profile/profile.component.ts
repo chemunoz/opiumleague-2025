@@ -1,4 +1,13 @@
-import { Component, OnInit, AfterViewInit, inject, ChangeDetectionStrategy, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  inject,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../core/services/data.service';
@@ -21,7 +30,7 @@ interface AwardInfo {
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
 })
 export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   private route = inject(ActivatedRoute);
@@ -29,14 +38,15 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   private chartService = inject(ChartService);
 
   @ViewChild('pointsChart') pointsChartRef!: ElementRef<HTMLCanvasElement>;
-  @ViewChild('positionsChart') positionsChartRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('positionsChart')
+  positionsChartRef!: ElementRef<HTMLCanvasElement>;
 
   player: Player | undefined;
   private trophiesList: TrophyInfo[] = [];
   private awardsList: AwardInfo[] = [];
 
   constructor() {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       this.player = this.dataService.getPlayer(params['id']);
     });
   }
@@ -69,20 +79,28 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   private calculateStats(): void {
     if (!this.player) return;
 
-    this.player.positions_general_differences = this.player.positions_general?.map((value, index) => 
-      index === 0 ? 0 : (this.player!.positions_general?.[index - 1] ?? 0) - value
-    ) ?? [];
+    this.player.positions_general_differences =
+      this.player.positions_general?.map((value, index) =>
+        index === 0
+          ? 0
+          : (this.player!.positions_general?.[index - 1] ?? 0) - value,
+      ) ?? [];
 
-    const diffs = this.player.positions_general_differences.filter((v): v is number => !isNaN(v));
-    this.player.positions_general_differences_max = diffs.length === 0 ? 0 : Math.max(...diffs);
-    this.player.positions_general_differences_min = diffs.length === 0 ? 0 : Math.abs(Math.min(...diffs));
+    const diffs = this.player.positions_general_differences.filter(
+      (v): v is number => !isNaN(v),
+    );
+    this.player.positions_general_differences_max =
+      diffs.length === 0 ? 0 : Math.max(...diffs);
+    this.player.positions_general_differences_min =
+      diffs.length === 0 ? 0 : Math.abs(Math.min(...diffs));
 
     this.trophiesList = [];
     let totalTrophies = 0;
-    
+
     if (this.player.trophies) {
-      Object.keys(this.player.trophies).forEach(key => {
-        const trophy = this.player!.trophies[key as keyof typeof this.player.trophies];
+      Object.keys(this.player.trophies).forEach((key) => {
+        const trophy =
+          this.player!.trophies[key as keyof typeof this.player.trophies];
         if (trophy && trophy.length > 0) {
           totalTrophies += trophy.length;
           trophy.forEach(() => {
@@ -91,41 +109,54 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
     }
-    
+
     this.player.trophies_total = totalTrophies;
 
     this.awardsList = [];
     let totalAwards = 0;
-    
+
     if (this.player.awards) {
-      Object.keys(this.player.awards).forEach(key => {
-        const award = this.player!.awards[key as keyof typeof this.player.awards];
+      Object.keys(this.player.awards).forEach((key) => {
+        const award =
+          this.player!.awards[key as keyof typeof this.player.awards];
         if (award && award.length > 0) {
           totalAwards += award.length;
           award.forEach(() => {
             if (key === 'round_top') {
-              this.awardsList.push({ kind: 'fas fa-award', title: 'Jornada Top' });
+              this.awardsList.push({
+                kind: 'fas fa-award',
+                title: 'Jornada Top',
+              });
             } else if (key === 'rounds_regularity') {
-              this.awardsList.push({ kind: 'fas fa-star', title: 'Premio Regularidad' });
+              this.awardsList.push({
+                kind: 'fas fa-star',
+                title: 'Premio Regularidad',
+              });
             }
           });
         }
       });
     }
-    
+
     this.player.awards_total = totalAwards;
 
     if (this.player.positions_general) {
-      const validPositions = this.player.positions_general.filter((v): v is number => !isNaN(v));
-      this.player.positions_general_max = validPositions.length === 0 ? 0 : Math.max(...validPositions);
-      this.player.positions_general_min = validPositions.length === 0 ? 0 : Math.abs(Math.min(...validPositions));
+      const validPositions = this.player.positions_general.filter(
+        (v): v is number => !isNaN(v),
+      );
+      this.player.positions_general_max =
+        validPositions.length === 0 ? 0 : Math.max(...validPositions);
+      this.player.positions_general_min =
+        validPositions.length === 0 ? 0 : Math.abs(Math.min(...validPositions));
     }
   }
 
   private createCharts(): void {
     if (!this.player) return;
 
-    const validPoints = this.player.points.filter((v): v is number => v !== null);
+    const validPoints = this.player.points.filter(
+      (v): v is number => v !== null,
+    );
     const labels = validPoints.map((_, i) => `J${i + 1}`);
 
     const ejeYJornada = validPoints;
@@ -139,20 +170,30 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
           'points-chart',
           labels,
           [
-            { label: 'Puntos', data: ejeYJornada, borderColor: '#e94560', backgroundColor: 'rgba(233, 69, 96, 0.1)' },
-            { label: 'Media', data: ejeYMedia, borderColor: '#16213e', backgroundColor: 'rgba(22, 33, 62, 0.1)' }
+            {
+              label: 'Puntos',
+              data: ejeYJornada,
+              borderColor: '#e94560',
+              backgroundColor: 'rgba(233, 69, 96, 0.1)',
+            },
+            {
+              label: 'Media',
+              data: ejeYMedia,
+              borderColor: '#16213e',
+              backgroundColor: 'rgba(22, 33, 62, 0.1)',
+            },
           ],
           {
             responsive: true,
             plugins: {
               legend: { display: true, position: 'top' },
-              title: { display: true, text: 'PUNTOS - Jornada vs Media' }
+              title: { display: true, text: 'PUNTOS - Jornada vs Media' },
             },
             scales: {
               x: { display: true },
-              y: { display: true, beginAtZero: false }
-            }
-          }
+              y: { display: true, beginAtZero: false },
+            },
+          },
         );
       }
 
@@ -161,20 +202,30 @@ export class ProfileComponent implements OnInit, AfterViewInit, OnDestroy {
           'positions-chart',
           labels,
           [
-            { label: 'Posición Jornada', data: ejeYPosicionesJornada, borderColor: '#e94560', backgroundColor: 'rgba(233, 69, 96, 0.1)' },
-            { label: 'Posición General', data: ejeYPosicionesGeneral, borderColor: '#16213e', backgroundColor: 'rgba(22, 33, 62, 0.1)' }
+            {
+              label: 'Posición Jornada',
+              data: ejeYPosicionesJornada,
+              borderColor: '#e94560',
+              backgroundColor: 'rgba(233, 69, 96, 0.1)',
+            },
+            {
+              label: 'Posición General',
+              data: ejeYPosicionesGeneral,
+              borderColor: '#16213e',
+              backgroundColor: 'rgba(22, 33, 62, 0.1)',
+            },
           ],
           {
             responsive: true,
             plugins: {
               legend: { display: true, position: 'top' },
-              title: { display: true, text: 'POSICIONES - Jornada vs General' }
+              title: { display: true, text: 'POSICIONES - Jornada vs General' },
             },
             scales: {
               x: { display: true },
-              y: { display: true, beginAtZero: true, reverse: true }
-            }
-          }
+              y: { display: true, beginAtZero: true, reverse: true },
+            },
+          },
         );
       }
     } catch (error) {

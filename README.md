@@ -1,61 +1,73 @@
-# Opiumleague2025
+# Opium League 2025
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+Fantasy football league tracker built with Angular 21. No backend — all data is static JSON loaded at startup.
 
-## Development server
+## Tech stack
 
-To start a local development server, run:
+- **Angular 21** — standalone components, signals, lazy-loaded routes, OnPush change detection
+- **Tailwind CSS** — dark theme with custom palette (`primary`, `secondary`, `accent`)
+- **Chart.js** — line, bar, and pie charts via `ChartService`
+- **Font Awesome 7** — icons
+- **Karma / Jasmine** — unit tests
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Commands
 
 ```bash
-ng generate component component-name
+npm start          # Dev server at http://localhost:4200 (hot reload)
+npm run build      # Production build → dist/opiumleague-2025/
+npm run watch      # Dev build with watch mode
+npm test           # Unit tests with Karma/Jasmine in Chrome
+npm run lint       # Angular ESLint linter
+npm run lint:fix   # Prettier + ESLint auto-fix
+npm run check      # lint + tests + build (full CI check)
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+To run a single spec file:
 
 ```bash
-ng generate --help
+npx ng test --include='src/app/charts/charts.component.spec.ts'
 ```
 
-## Building
-
-To build the project run:
+To generate a new standalone component:
 
 ```bash
-ng build
+npx ng generate component feature/my-component
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Data
 
-## Running unit tests
+All application data lives in `public/assets/data/`:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- `data.json` — array of `Player` objects with raw `points[]` per jornada (round)
+- `champions.json` — Champions competition structure (groups, rounds, countdowns)
 
-```bash
-ng test
+`DataService` loads `data.json` at startup into a signal and computes all derived stats (cumulative scores, rankings, positions, trends). Components never compute stats themselves — they call `readPlayers()`, `getPlayer(id)`, or `getJornadas()`.
+
+## Features / routes
+
+| Route                                                    | Feature                          |
+| -------------------------------------------------------- | -------------------------------- |
+| `/`                                                      | Home / overview                  |
+| `/table`, `/table-friends`                               | League standings                 |
+| `/charts`                                                | Score charts                     |
+| `/competitions`                                          | All competitions overview        |
+| `/cup`, `/champions`, `/uefa`                            | Knock-out and group competitions |
+| `/supercup-europa`, `/supercup-spain`, `/supercup-opium` | Super cups                       |
+| `/gallery`, `/profile/:id`                               | Player gallery and profiles      |
+| `/news`, `/rules`, `/history`                            | Content pages                    |
+
+## Project structure
+
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+src/app/
+  core/           # DataService, ChampionsService, ChartService, models
+  layout/         # AppHeader, AppMenu (shared shell components)
+  home/
+  table/
+  charts/
+  competitions/
+  gallery/
+  news/
+  rules/
+  history/
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-# opiumleague-2025

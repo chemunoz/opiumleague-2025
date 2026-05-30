@@ -1,1 +1,262 @@
-<p>competitions works!</p>
+<h2 class="comp-title">OTRAS COMPETICIONES</h2>
+
+<!-- Row 1: Major competitions -->
+<div class="comp-grid mb-6">
+  <!-- FO CUP -->
+  <div class="comp-card">
+    <a [routerLink]="['/cup']">
+      <img
+        class="comp-banner"
+        src="assets/img/competitions/banner_fo_cup.jpg"
+        alt="FO Cup"
+      />
+    </a>
+    <div class="comp-body">
+      <h5 class="comp-card-title">FO CUP</h5>
+      <p class="comp-card-text">
+        Competición bajo el soporte de Futmondo en su modo Copa, que enfrentará
+        a los participantes de la Opium League mediante eliminatorias directas a
+        ida y vuelta, incluída la final.
+      </p>
+    </div>
+    <div class="comp-footer">
+      @if (FOCup[0].distance > 0) {
+        <div class="comp-footer-row">
+          <small
+            ><i class="fas fa-diagnoses"></i> Sorteo:
+            <span id="countdown-draw-FOCup">0d 0h 0m 0s</span></small
+          >
+        </div>
+      }
+      @if (FOCup[1].distance > 0) {
+        <div class="comp-footer-row">
+          <small
+            ><i class="far fa-clock"></i> Inicio:
+            <span id="countdown-FOCup">0d 0h 0m 0s</span></small
+          >
+        </div>
+      }
+      <div class="comp-footer-row">
+        <small
+          ><i class="fas fa-expand-arrows-alt"></i> (ronda previa) Jor. 7 y Jor.
+          8</small
+        >
+      </div>
+      <div class="comp-footer-row comp-footer-last">
+        <small
+          ><i class="fas fa-expand-arrows-alt"></i> (cruces) Desde Jor. 9 hasta
+          Jor. 18</small
+        >
+        <a [routerLink]="['/cup']"><i class="fas fa-angle-double-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAMPIONS LEAGUE -->
+  <div class="comp-card">
+    <a [routerLink]="['/champions']">
+      <img
+        class="comp-banner"
+        src="assets/img/competitions/banner_champions_league.jpg"
+        alt="Champions League"
+      />
+    </a>
+    <div class="comp-body">
+      <h5 class="comp-card-title">CHAMPIONS LEAGUE</h5>
+      <p class="comp-card-text">
+        Competición donde los participantes se enfrentarán siguiendo un formato
+        similar al de la Liga de Campeones, contando con una primera fase de
+        liguilla, para pasar a la fase de eliminatorias a ida y vuelta, salvo la
+        final que será a partido único.
+      </p>
+    </div>
+    <div class="comp-footer">
+      @if ((Champions[0]?.distance ?? 0) > 0) {
+        <div class="comp-footer-row">
+          <small
+            ><i class="fas fa-diagnoses"></i> Sorteo:
+            <span id="countdown-draw-Champions">0d 0h 0m 0s</span></small
+          >
+        </div>
+      }
+      @if ((Champions[1]?.distance ?? 0) > 0) {
+        <div class="comp-footer-row">
+          <small
+            ><i class="far fa-clock"></i> Inicio:
+            <span id="countdown-Champions">0d 0h 0m 0s</span></small
+          >
+        </div>
+      }
+      <div class="comp-footer-row">
+        <small
+          ><i class="fas fa-table"></i> (liguilla) Desde Jor. 22 hasta Jor.
+          27</small
+        >
+      </div>
+      <div class="comp-footer-row comp-footer-last">
+        <small
+          ><i class="fas fa-expand-arrows-alt"></i> (cruces) Desde Jor. 31 hasta
+          Jor. 37</small
+        >
+        <a [routerLink]="['/champions']"
+          ><i class="fas fa-angle-double-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- EUROPA LEAGUE -->
+  <div class="comp-card">
+    <a [routerLink]="['/uefa']">
+      <img
+        class="comp-banner"
+        src="assets/img/competitions/banner_europa_league.jpg"
+        alt="Europa League"
+      />
+    </a>
+    <div class="comp-body">
+      <h5 class="comp-card-title">EUROPA LEAGUE</h5>
+      <p class="comp-card-text">
+        Competición en la que participarán los equipos que hayan quedado
+        eliminados tanto en la ronda previa como en la fase de liguilla de la
+        "OPIUM CHAMPIONS LEAGUE" y se jugará a eliminatorias a ida y vuelta,
+        salvo la final que será a partido único.
+      </p>
+    </div>
+    <div class="comp-footer">
+      @if (EuropaLeague[0].distance > 0) {
+        <div class="comp-footer-row">
+          <small
+            ><i class="far fa-clock"></i> Inicio:
+            <span id="countdown-EuropaLeague">0d 0h 0m 0s</span></small
+          >
+        </div>
+      }
+      <div class="comp-footer-row comp-footer-last">
+        <small
+          ><i class="fas fa-expand-arrows-alt"></i> (cruces) Desde Jor. 28 hasta
+          Jor. 36</small
+        >
+        <a [routerLink]="['/uefa']"
+          ><i class="fas fa-angle-double-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 2: Supercups -->
+<div class="comp-grid mb-6">
+  <!-- SUPERCOPA EUROPA -->
+  <div class="comp-card">
+    <a [routerLink]="['/supercup-europa']">
+      <img
+        class="comp-banner"
+        src="assets/img/competitions/banner_supercopa_europa.jpg"
+        alt="Supercopa Europa"
+      />
+    </a>
+    <div class="comp-body">
+      <h5 class="comp-card-title">SUPERCOPA EUROPA</h5>
+      <p class="comp-card-text">
+        Competición en la que participarán los campeones de Champions y Europa
+        League de la temporada anterior a partido único.
+      </p>
+    </div>
+    <div class="comp-footer">
+      @if (SupercupEuropa[0].distance > 0) {
+        <div class="comp-footer-row">
+          <small
+            ><i class="far fa-clock"></i> Inicio:
+            <span id="countdown-SupercupEuropa">0d 0h 0m 0s</span></small
+          >
+        </div>
+      }
+      <div class="comp-footer-row comp-footer-last">
+        <small><i class="fas fa-arrows-alt-h"></i> (final) Jor. 2</small>
+        <a [routerLink]="['/supercup-europa']"
+          ><i class="fas fa-angle-double-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPERCOPA ESPAÑA -->
+  <div class="comp-card">
+    <a [routerLink]="['/supercup-spain']">
+      <img
+        class="comp-banner"
+        src="assets/img/competitions/banner_supercopa_espana.jpg"
+        alt="Supercopa España"
+      />
+    </a>
+    <div class="comp-body">
+      <h5 class="comp-card-title">SUPERCOPA ESPAÑA</h5>
+      <p class="comp-card-text">
+        Competición en la que participarán los dos equipos finalistas de la FO
+        Cup y el campeón y subcampeón de la Opium League de la temporada
+        anterior.
+      </p>
+    </div>
+    <div class="comp-footer">
+      @if (SupercupSpain[0].distance > 0) {
+        <div class="comp-footer-row">
+          <small
+            ><i class="far fa-clock"></i> Inicio:
+            <span id="countdown-SupercupSpain">0d 0h 0m 0s</span></small
+          >
+        </div>
+      }
+      <div class="comp-footer-row">
+        <small
+          ><i class="fas fa-expand-arrows-alt"></i> (semifinales) Jor. 4</small
+        >
+      </div>
+      <div class="comp-footer-row comp-footer-last">
+        <small><i class="fas fa-expand-arrows-alt"></i> (final) Jor. 5</small>
+        <a [routerLink]="['/supercup-spain']"
+          ><i class="fas fa-angle-double-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPERCOPA OPIUM -->
+  <div class="comp-card">
+    <a [routerLink]="['/supercup-opium']">
+      <img
+        class="comp-banner"
+        src="assets/img/competitions/banner_supercopa_opium.jpg"
+        alt="Supercopa Opium"
+      />
+    </a>
+    <div class="comp-body">
+      <h5 class="comp-card-title">SUPERCOPA OPIUM</h5>
+      <p class="comp-card-text">
+        Competición en la que participarán los campeones de Liga, FO Cup,
+        Champions y Europa League de la temporada anterior.
+      </p>
+    </div>
+    <div class="comp-footer">
+      @if (SupercupOpium[0].distance > 0) {
+        <div class="comp-footer-row">
+          <small
+            ><i class="far fa-clock"></i> Inicio:
+            <span id="countdown-SupercupOpium">0d 0h 0m 0s</span></small
+          >
+        </div>
+      }
+      <div class="comp-footer-row">
+        <small
+          ><i class="fas fa-expand-arrows-alt"></i> (semifinales) Jor. 19</small
+        >
+      </div>
+      <div class="comp-footer-row comp-footer-last">
+        <small><i class="fas fa-expand-arrows-alt"></i> (final) Jor. 20</small>
+        <a [routerLink]="['/supercup-opium']"
+          ><i class="fas fa-angle-double-right"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>

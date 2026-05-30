@@ -1,1 +1,180 @@
-<p>supercup-spain works!</p>
+<div class="comp-header">
+  <img
+    src="/assets/img/cups/supercopa_espana.png"
+    class="comp-cup-icon"
+    alt="Supercopa España"
+  />
+  SUPERCOPA ESPAÑA
+</div>
+<hr />
+
+@if (SupercupSpain[0].distance > 0) {
+  <div class="text-center mb-2">
+    <i class="far fa-clock"></i> Inicio:
+    <span id="countdown-SupercupSpain">0d 0h 0m 0s</span>
+  </div>
+}
+
+<div class="champ-winner">
+  <div class="champ-winner-title">CAMPEÓN 2019-2020</div>
+  <a [routerLink]="['/profile', 36]">
+    <img
+      src="/assets/img/shields/150/richard.png"
+      class="winner-shield"
+      alt="La Familia"
+    />
+    <div>La Familia</div>
+  </a>
+  <div class="champ-note mt-2">
+    <i class="fas fa-exclamation-triangle" style="color: #ffc107;"></i>
+    <small>
+      Al coincidir esta temporada los finalistas de la FO Cup con el campeón y
+      subcampeón de Liga, se completa el cuadro con los 3º y 4º clasificados en
+      Liga.</small
+    >
+  </div>
+</div>
+
+<div class="text-center mb-4">
+  <img
+    class="cruces-img"
+    src="/assets/img/competitions/supercup_spain_cruces.jpg"
+    alt="Cruces Supercopa España"
+  />
+</div>
+
+<div class="h4 text-center mt-3">RESULTADOS</div>
+
+<div class="tab-bar">
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'semis'"
+    (click)="activeTab.set('semis')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i> SEMIFINALES
+  </button>
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'final'"
+    (click)="activeTab.set('final')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i> FINAL
+  </button>
+</div>
+
+@switch (activeTab()) {
+  @case ("semis") {
+    <div class="h5 text-center mt-3">SEMIFINALES</div>
+    <div class="table-responsive">
+      <table class="cup-table">
+        <tr>
+          <td colspan="3" class="round-header">
+            <i class="far fa-clock"></i> PARTIDO ÚNICO: 30/09/2020
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center">EQUIPO</th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+          <th class="text-center">EQUIPO</th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 4]"
+              ><img
+                src="/assets/img/shields/150/javi_monte.png"
+                class="table-shield"
+                alt="C.D. Monte"
+              />
+              <div>C.D. Monte</div></a
+            >
+          </td>
+          <td class="resultado text-center">
+            <div class="cup-score"><small>58 - 71</small></div>
+          </td>
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 36]"
+              ><img
+                src="/assets/img/shields/150/richard.png"
+                class="table-shield"
+                alt="La Familia"
+              />
+              <div>La Familia</div></a
+            >
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 3]"
+              ><img
+                src="/assets/img/shields/150/luis.png"
+                class="table-shield"
+                alt="Porrua City"
+              />
+              <div>Porrua City</div></a
+            >
+          </td>
+          <td class="resultado text-center">
+            <div class="cup-score"><small>50 - 66</small></div>
+          </td>
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 2]"
+              ><img
+                src="/assets/img/shields/150/ortega.png"
+                class="table-shield"
+                alt="David Valcan"
+              />
+              <div>David Valcan</div></a
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+  }
+
+  @case ("final") {
+    <div class="h5 text-center mt-3">FINAL</div>
+    <div class="table-responsive">
+      <table class="cup-table">
+        <tr>
+          <td colspan="3" class="round-header">
+            <i class="far fa-clock"></i> PARTIDO ÚNICO: 04/10/2020
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center">EQUIPO</th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+          <th class="text-center">EQUIPO</th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 36]"
+              ><img
+                src="/assets/img/shields/150/richard.png"
+                class="table-shield"
+                alt="La Familia"
+              />
+              <div>La Familia</div></a
+            >
+          </td>
+          <td class="resultado text-center">
+            <div class="cup-score"><small>70 - 40</small></div>
+          </td>
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 2]"
+              ><img
+                src="/assets/img/shields/150/ortega.png"
+                class="table-shield"
+                alt="David Valcan"
+              />
+              <div>David Valcan</div></a
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+  }
+}

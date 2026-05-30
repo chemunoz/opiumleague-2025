@@ -62,6 +62,9 @@ export class ChampionsComponent implements OnInit, OnDestroy {
   readonly championsGroups = signal<ChampionsGroup[]>([]);
   readonly players = signal<Player[]>([]);
   readonly championsTables = signal<Record<string, ChampionsTable>>({});
+  readonly activeTab = signal<'grupos' | 'cruces'>('cruces');
+  readonly activeGroupTab = signal<string>('');
+  readonly activeCrucesTab = signal<'octavos' | 'cuartos' | 'semis' | 'final'>('final');
 
   private countdownInterval: ReturnType<typeof setInterval> | null = null;
 
@@ -80,6 +83,9 @@ export class ChampionsComponent implements OnInit, OnDestroy {
     this.championsRounds.set(this.championsService.getRounds());
     this.players.set(this.dataService.players());
 
+    if (this.championsGroups().length > 0) {
+      this.activeGroupTab.set(this.championsGroups()[0].name);
+    }
     this.calculateTables();
     this.startCountdowns();
   }

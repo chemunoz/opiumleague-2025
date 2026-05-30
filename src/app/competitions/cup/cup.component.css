@@ -1,0 +1,218 @@
+.comp-header {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.comp-cup-icon {
+  height: 40px;
+  vertical-align: bottom;
+}
+
+.champ-winner {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.champ-winner-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.champ-winner a {
+  text-decoration: none;
+  color: inherit;
+}
+.champ-winner .h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+.winner-shield {
+  display: block;
+  margin: 0 auto 0.25rem;
+}
+
+.text-center {
+  text-align: center;
+}
+.h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+}
+.h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.75rem 0 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+/* ── Tab bar ────────────────────────────────────────────────── */
+.tab-bar {
+  display: flex;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  flex: 1;
+  min-width: 60px;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  color: #555;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: #3aaa64;
+}
+.tab-btn.active {
+  color: #3aaa64;
+  border-bottom-color: #3aaa64;
+}
+
+.tab-label-short {
+  display: none;
+}
+.tab-label-long {
+  display: inline;
+}
+
+@media (max-width: 640px) {
+  .tab-label-long {
+    display: none;
+  }
+  .tab-label-short {
+    display: inline;
+  }
+  .tab-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.3rem;
+  }
+}
+
+/* ── Tables ─────────────────────────────────────────────────── */
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.cup-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.cup-table th,
+.cup-table td {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #dee2e6;
+}
+
+.cup-table th {
+  background: #e8e8e8;
+  font-weight: 700;
+}
+
+.table-shield {
+  height: 24px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.equipo a {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.resultado {
+  text-align: center;
+}
+.resultado--win {
+  background: #198754;
+  color: #fff;
+  text-align: center;
+}
+.resultado--lose {
+  background: #dc3545;
+  color: #fff;
+  text-align: center;
+}
+.resultado--win-pre {
+  background: #d1e7dd;
+  text-align: center;
+}
+.resultado--lose-pre {
+  background: #f8d7da;
+  text-align: center;
+}
+
+.cup-score {
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+.cup-difference {
+  font-size: 0.72rem;
+  color: #666;
+  display: block;
+}
+.resultado--win .cup-difference {
+  color: #d4edda;
+}
+.resultado--lose .cup-difference {
+  color: #f8d7da;
+}
+
+.homeaway-result {
+  display: inline-block;
+  background: #555;
+  color: #fff;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+.round-header {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.fila {
+  background: #fafafa;
+}
+.fila:nth-child(even) {
+  background: #f3f3f3;
+}
+
+.cruces-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

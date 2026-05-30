@@ -1,1 +1,340 @@
-<p>champions works!</p>
+<div class="comp-header">
+  <img
+    src="/assets/img/cups/champions.png"
+    class="comp-cup-icon"
+    alt="Champions"
+  />
+  <span>CHAMPIONS LEAGUE</span>
+</div>
+<hr />
+
+@if ((championsCountdowns()[0]?.distance ?? 0) > 0) {
+  <div class="text-center mb-2">
+    <i class="fas fa-diagnoses"></i> Sorteo:
+    <span id="countdown-draw-Champions">0d 0h 0m 0s</span>
+  </div>
+}
+@if ((championsCountdowns()[1]?.distance ?? 0) > 0) {
+  <div class="text-center mb-2">
+    <i class="far fa-clock"></i> Inicio:
+    <span id="countdown-Champions">0d 0h 0m 0s</span>
+  </div>
+}
+
+<!-- Champion header -->
+<div class="champ-winner">
+  <div class="champ-winner-title">CAMPEÓN 2020-2021</div>
+  <a [routerLink]="['/profile', 44]">
+    <img
+      src="/assets/img/shields/150/vicente2.png"
+      class="winner-shield"
+      alt="DamageKKing"
+    />
+    <h3>DamageKKing</h3>
+  </a>
+</div>
+
+<!-- Bracket image always visible -->
+<div class="text-center mt-3 mb-3">
+  <img class="cruces-img" src="/assets/img/competitions/champions_cruces.jpg" alt="Cruces de Champions">
+</div>
+
+<!-- Tab bar -->
+<div class="tab-bar">
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'grupos'"
+    (click)="activeTab.set('grupos')"
+  >
+    <i class="fas fa-table"></i> GRUPOS
+  </button>
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'cruces'"
+    (click)="activeTab.set('cruces')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i> CRUCES
+  </button>
+</div>
+
+@switch (activeTab()) {
+  @case ("grupos") {
+    <div class="mt-3">
+      @if (championsGroups().length === 0) {
+        <div class="text-center my-4 text-lg font-semibold">
+          AÚN NO HAY GRUPOS
+        </div>
+      } @else {
+        <!-- Group sub-tabs -->
+        <div class="tab-bar">
+          @for (group of championsGroups(); track group.name) {
+            <button
+              class="tab-btn"
+              [class.active]="activeGroupTab() === group.name"
+              (click)="activeGroupTab.set(group.name)"
+            >
+              <i class="fas fa-table"></i> GRUPO {{ group.name }}
+            </button>
+          }
+        </div>
+
+        @for (group of championsGroups(); track group.name) {
+          @if (activeGroupTab() === group.name) {
+            <div class="mt-3">
+              <!-- Group standings table -->
+              <div class="table-responsive">
+                <table class="cup-table cup-table--group">
+                  <thead>
+                    <tr>
+                      <th>Pos</th>
+                      <th>EQUIPO</th>
+                      <th class="text-center">PJ</th>
+                      <th class="text-center">PG</th>
+                      <th class="text-center">PE</th>
+                      <th class="text-center">PP</th>
+                      <th class="text-center">PF</th>
+                      <th class="text-center">PC</th>
+                      <th class="text-center">DIF</th>
+                      <th class="text-center">PTS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @let table = championsTables()[group.name];
+                    @if (table) {
+                      @for (
+                        team of table.table;
+                        track team.id;
+                        let i = $index
+                      ) {
+                        <tr [class]="i < 2 ? 'row-qualify' : ''">
+                          <td class="text-center">{{ i + 1 }}</td>
+                          <td class="equipo">
+                            <a [routerLink]="['/profile', team.id]">
+                              <img
+                                [src]="
+                                  '/assets/img/shields/150/' +
+                                  getPlayerShield(team.id)
+                                "
+                                class="table-shield"
+                                [alt]="getPlayerTeam(team.id)"
+                              />
+                              <span>{{ getPlayerName(team.id) }}</span>
+                            </a>
+                          </td>
+                          <td class="text-center">{{ team.pj }}</td>
+                          <td class="text-center">{{ team.pg }}</td>
+                          <td class="text-center">{{ team.pe }}</td>
+                          <td class="text-center">{{ team.pp }}</td>
+                          <td class="text-center">{{ team.pf }}</td>
+                          <td class="text-center">{{ team.pc }}</td>
+                          <td class="text-center">{{ team.dif }}</td>
+                          <td class="text-center font-bold">
+                            {{ team.score }}
+                          </td>
+                        </tr>
+                      }
+                    }
+                  </tbody>
+                </table>
+              </div>
+              <p class="text-center mt-2"><small><i class="fas fa-exclamation-circle"></i> Clasifican los 2 primeros equipos de cada grupo</small></p>
+
+              <!-- Group rounds -->
+              @if (table && table.rounds.length > 0) {
+                <div class="mt-3">
+                  <h6 class="text-center font-semibold mb-2">JORNADAS</h6>
+                  @for (round of table.rounds; track $index; let ri = $index) {
+                    <table class="cup-table mb-3">
+                      <tr>
+                        <td colspan="3" class="round-header">
+                          <i class="far fa-clock"></i> Jornada {{ ri + 1 }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>EQUIPO</th>
+                        <th class="text-center">
+                          <span class="homeaway-result">TOTAL</span>
+                        </th>
+                        <th>EQUIPO</th>
+                      </tr>
+                      <!-- Match 1 -->
+                      <tr class="fila">
+                        <td class="text-center equipo">
+                          <a [routerLink]="['/profile', round.match1[0].id]">
+                            <img
+                              [src]="
+                                '/assets/img/shields/150/' +
+                                getPlayerShield(round.match1[0].id)
+                              "
+                              class="table-shield"
+                              [alt]="getPlayerTeam(round.match1[0].id)"
+                            />
+                            <div>{{ getPlayerName(round.match1[0].id) }}</div>
+                          </a>
+                        </td>
+                        <td class="text-center resultado">
+                          <div class="cup-score">
+                            {{ round.match1[0].score ?? "-" }} -
+                            {{ round.match1[1].score ?? "-" }}
+                          </div>
+                        </td>
+                        <td class="text-center equipo">
+                          <a [routerLink]="['/profile', round.match1[1].id]">
+                            <img
+                              [src]="
+                                '/assets/img/shields/150/' +
+                                getPlayerShield(round.match1[1].id)
+                              "
+                              class="table-shield"
+                              [alt]="getPlayerTeam(round.match1[1].id)"
+                            />
+                            <div>{{ getPlayerName(round.match1[1].id) }}</div>
+                          </a>
+                        </td>
+                      </tr>
+                      <!-- Match 2 -->
+                      <tr class="fila">
+                        <td class="text-center equipo">
+                          <a [routerLink]="['/profile', round.match2[0].id]">
+                            <img
+                              [src]="
+                                '/assets/img/shields/150/' +
+                                getPlayerShield(round.match2[0].id)
+                              "
+                              class="table-shield"
+                              [alt]="getPlayerTeam(round.match2[0].id)"
+                            />
+                            <div>{{ getPlayerName(round.match2[0].id) }}</div>
+                          </a>
+                        </td>
+                        <td class="text-center resultado">
+                          <div class="cup-score">
+                            {{ round.match2[0].score ?? "-" }} -
+                            {{ round.match2[1].score ?? "-" }}
+                          </div>
+                        </td>
+                        <td class="text-center equipo">
+                          <a [routerLink]="['/profile', round.match2[1].id]">
+                            <img
+                              [src]="
+                                '/assets/img/shields/150/' +
+                                getPlayerShield(round.match2[1].id)
+                              "
+                              class="table-shield"
+                              [alt]="getPlayerTeam(round.match2[1].id)"
+                            />
+                            <div>{{ getPlayerName(round.match2[1].id) }}</div>
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  }
+                </div>
+              }
+            </div>
+          }
+        }
+      }
+    </div>
+  }
+
+  @case ("cruces") {
+    <div class="tab-bar mt-3">
+      <button class="tab-btn" [class.active]="activeCrucesTab() === 'octavos'" (click)="activeCrucesTab.set('octavos')">
+        <i class="fas fa-expand-arrows-alt"></i> <span class="tab-label-long">OCTAVOS</span><span class="tab-label-short">8º</span>
+      </button>
+      <button class="tab-btn" [class.active]="activeCrucesTab() === 'cuartos'" (click)="activeCrucesTab.set('cuartos')">
+        <i class="fas fa-expand-arrows-alt"></i> <span class="tab-label-long">CUARTOS</span><span class="tab-label-short">4º</span>
+      </button>
+      <button class="tab-btn" [class.active]="activeCrucesTab() === 'semis'" (click)="activeCrucesTab.set('semis')">
+        <i class="fas fa-expand-arrows-alt"></i> <span class="tab-label-long">SEMIFINALES</span><span class="tab-label-short">SE</span>
+      </button>
+      <button class="tab-btn" [class.active]="activeCrucesTab() === 'final'" (click)="activeCrucesTab.set('final')">
+        <i class="fas fa-expand-arrows-alt"></i> <span class="tab-label-long">FINAL</span><span class="tab-label-short">FI</span>
+      </button>
+    </div>
+
+    @switch (activeCrucesTab()) {
+      @case ('octavos') {
+        <div class="h5 text-center mt-3">OCTAVOS DE FINAL</div>
+        <div class="table-responsive">
+          <table class="cup-table">
+            <tr><td colspan="4" class="round-header"><i class="far fa-clock"></i> IDA: 18/04/2021 - VUELTA: 21/04/2021</td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 44]"><img src="/assets/img/shields/150/vicente2.png" class="table-shield" alt="DamageKKing"> DamageKKing</a></td><td class="resultado resultado--win-pre"><div class="cup-score">75</div><small class="cup-difference">(+9)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">86</div><small class="cup-difference">(-1)</small></td><td class="resultado resultado--win"><div class="cup-score">161</div><small class="cup-difference">(+8)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 36]"><img src="/assets/img/shields/150/richard.png" class="table-shield" alt="La Familia"> La Familia</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">66</div><small class="cup-difference">(-9)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">87</div><small class="cup-difference">(+1)</small></td><td class="resultado resultado--lose"><div class="cup-score">153</div><small class="cup-difference">(-8)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 41]"><img src="/assets/img/shields/150/ramon_peredo.png" class="table-shield" alt="Montaña Porrúa"> Montaña Porrúa</a></td><td class="resultado resultado--win-pre"><div class="cup-score">64</div><small class="cup-difference">(+42)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">63</div><small class="cup-difference">(-2)</small></td><td class="resultado resultado--win"><div class="cup-score">127</div><small class="cup-difference">(+40)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 8]"><img src="/assets/img/shields/150/ines.png" class="table-shield" alt="Capitán Tsubasa"> Capitán Tsubasa</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">22</div><small class="cup-difference">(-42)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">65</div><small class="cup-difference">(+2)</small></td><td class="resultado resultado--lose"><div class="cup-score">87</div><small class="cup-difference">(-40)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 0]"><img src="/assets/img/shields/150/jc.png" class="table-shield" alt="Frente Popular"> Frente Popular</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">63</div><small class="cup-difference">(-7)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">79</div><small class="cup-difference">(-11)</small></td><td class="resultado resultado--lose"><div class="cup-score">142</div><small class="cup-difference">(-18)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 31]"><img src="/assets/img/shields/150/javichu.png" class="table-shield" alt="Racing Hoznayo"> Racing Hoznayo</a></td><td class="resultado resultado--win-pre"><div class="cup-score">70</div><small class="cup-difference">(+7)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">90</div><small class="cup-difference">(+11)</small></td><td class="resultado resultado--win"><div class="cup-score">160</div><small class="cup-difference">(+18)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 20]"><img src="/assets/img/shields/150/felipe.png" class="table-shield" alt="Old Tikis"> Old Tikis</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">53</div><small class="cup-difference">(-5)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">77</div><small class="cup-difference">(+8)</small></td><td class="resultado resultado--win"><div class="cup-score">130</div><small class="cup-difference">(+3)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 12]"><img src="/assets/img/shields/150/pablo_fernandez.png" class="table-shield" alt="Lábaro FC"> Lábaro FC</a></td><td class="resultado resultado--win-pre"><div class="cup-score">58</div><small class="cup-difference">(+5)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">69</div><small class="cup-difference">(-8)</small></td><td class="resultado resultado--lose"><div class="cup-score">127</div><small class="cup-difference">(-3)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 13]"><img src="/assets/img/shields/150/borja_ramos.png" class="table-shield" alt="Bierzo Power"> Bierzo Power</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">49</div><small class="cup-difference">(-55)</small></td><td class="resultado"><div class="cup-score">-</div><small class="cup-difference">(+0)</small></td><td class="resultado resultado--lose"><div class="cup-score">49</div><small class="cup-difference">(-149)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 2]"><img src="/assets/img/shields/150/ortega.png" class="table-shield" alt="David Valcan"> David Valcan</a></td><td class="resultado resultado--win-pre"><div class="cup-score">104</div><small class="cup-difference">(+55)</small></td><td class="resultado"><div class="cup-score">94</div><small class="cup-difference">(+0)</small></td><td class="resultado resultado--win"><div class="cup-score">198</div><small class="cup-difference">(+149)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 3]"><img src="/assets/img/shields/150/luis.png" class="table-shield" alt="Porrua City"> Porrua City</a></td><td class="resultado resultado--win-pre"><div class="cup-score">83</div><small class="cup-difference">(+26)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">101</div><small class="cup-difference">(+44)</small></td><td class="resultado resultado--win"><div class="cup-score">184</div><small class="cup-difference">(+70)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 23]"><img src="/assets/img/shields/150/diego.png" class="table-shield" alt="Orgullo de Runner"> Orgullo de Runner</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">57</div><small class="cup-difference">(-26)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">57</div><small class="cup-difference">(-44)</small></td><td class="resultado resultado--lose"><div class="cup-score">114</div><small class="cup-difference">(-70)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 7]"><img src="/assets/img/shields/150/fran.png" class="table-shield" alt="Rino's Boys"> Rino's Boys</a></td><td class="resultado"><div class="cup-score">56</div><small class="cup-difference">(+0)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">70</div><small class="cup-difference">(-9)</small></td><td class="resultado resultado--lose"><div class="cup-score">126</div><small class="cup-difference">(-9)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 40]"><img src="/assets/img/shields/150/fernando_murube.png" class="table-shield" alt="Murube's Jr"> Murube's Jr</a></td><td class="resultado"><div class="cup-score">56</div><small class="cup-difference">(+0)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">79</div><small class="cup-difference">(+9)</small></td><td class="resultado resultado--win"><div class="cup-score">135</div><small class="cup-difference">(+9)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 9]"><img src="/assets/img/shields/150/nandelas.png" class="table-shield" alt="InFiCaN ViAjEs"> InFiCaN ViAjEs</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">28</div><small class="cup-difference">(-49)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">62</div><small class="cup-difference">(-19)</small></td><td class="resultado resultado--lose"><div class="cup-score">90</div><small class="cup-difference">(-68)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 38]"><img src="/assets/img/shields/150/hector.png" class="table-shield" alt="Vieja Escuela FC"> Vieja Escuela FC</a></td><td class="resultado resultado--win-pre"><div class="cup-score">77</div><small class="cup-difference">(+49)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">81</div><small class="cup-difference">(+19)</small></td><td class="resultado resultado--win"><div class="cup-score">158</div><small class="cup-difference">(+68)</small></td></tr>
+          </table>
+        </div>
+      }
+      @case ('cuartos') {
+        <div class="h5 text-center mt-3">CUARTOS DE FINAL</div>
+        <div class="table-responsive">
+          <table class="cup-table">
+            <tr><td colspan="4" class="round-header"><i class="far fa-clock"></i> IDA: 25/04/2021 - VUELTA: 02/05/2021</td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 44]"><img src="/assets/img/shields/150/vicente2.png" class="table-shield" alt="DamageKKing"> DamageKKing</a></td><td class="resultado resultado--win-pre"><div class="cup-score">59</div><small class="cup-difference">(+7)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">69</div><small class="cup-difference">(+5)</small></td><td class="resultado resultado--win"><div class="cup-score">128</div><small class="cup-difference">(+12)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 41]"><img src="/assets/img/shields/150/ramon_peredo.png" class="table-shield" alt="Montaña Porrúa"> Montaña Porrúa</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">52</div><small class="cup-difference">(-7)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">64</div><small class="cup-difference">(-5)</small></td><td class="resultado resultado--lose"><div class="cup-score">116</div><small class="cup-difference">(-12)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 31]"><img src="/assets/img/shields/150/javichu.png" class="table-shield" alt="Racing Hoznayo"> Racing Hoznayo</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">48</div><small class="cup-difference">(-7)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">88</div><small class="cup-difference">(+16)</small></td><td class="resultado resultado--win"><div class="cup-score">136</div><small class="cup-difference">(+9)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 20]"><img src="/assets/img/shields/150/felipe.png" class="table-shield" alt="Old Tikis"> Old Tikis</a></td><td class="resultado resultado--win-pre"><div class="cup-score">55</div><small class="cup-difference">(+7)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">72</div><small class="cup-difference">(-16)</small></td><td class="resultado resultado--lose"><div class="cup-score">127</div><small class="cup-difference">(-9)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 2]"><img src="/assets/img/shields/150/ortega.png" class="table-shield" alt="David Valcan"> David Valcan</a></td><td class="resultado"><div class="cup-score">58</div><small class="cup-difference">(+0)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">62</div><small class="cup-difference">(-5)</small></td><td class="resultado resultado--lose"><div class="cup-score">120</div><small class="cup-difference">(-5)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 3]"><img src="/assets/img/shields/150/luis.png" class="table-shield" alt="Porrua City"> Porrua City</a></td><td class="resultado"><div class="cup-score">58</div><small class="cup-difference">(+0)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">67</div><small class="cup-difference">(+5)</small></td><td class="resultado resultado--win"><div class="cup-score">125</div><small class="cup-difference">(+5)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 40]"><img src="/assets/img/shields/150/fernando_murube.png" class="table-shield" alt="Murube's Jr"> Murube's Jr</a></td><td class="resultado resultado--win-pre"><div class="cup-score">62</div><small class="cup-difference">(+7)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">73</div><small class="cup-difference">(-4)</small></td><td class="resultado resultado--win"><div class="cup-score">135</div><small class="cup-difference">(+3)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 38]"><img src="/assets/img/shields/150/hector.png" class="table-shield" alt="Vieja Escuela FC"> Vieja Escuela FC</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">55</div><small class="cup-difference">(-7)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">77</div><small class="cup-difference">(+4)</small></td><td class="resultado resultado--lose"><div class="cup-score">132</div><small class="cup-difference">(-3)</small></td></tr>
+          </table>
+        </div>
+      }
+      @case ('semis') {
+        <div class="h5 text-center mt-3">SEMIFINALES</div>
+        <div class="table-responsive">
+          <table class="cup-table">
+            <tr><td colspan="4" class="round-header"><i class="far fa-clock"></i> IDA: 09/05/2021 - VUELTA: 12/05/2021</td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 44]"><img src="/assets/img/shields/150/vicente2.png" class="table-shield" alt="DamageKKing"> DamageKKing</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">42</div><small class="cup-difference">(-21)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">88</div><small class="cup-difference">(+32)</small></td><td class="resultado resultado--win"><div class="cup-score">130</div><small class="cup-difference">(+11)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 31]"><img src="/assets/img/shields/150/javichu.png" class="table-shield" alt="Racing Hoznayo"> Racing Hoznayo</a></td><td class="resultado resultado--win-pre"><div class="cup-score">63</div><small class="cup-difference">(+21)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">56</div><small class="cup-difference">(-32)</small></td><td class="resultado resultado--lose"><div class="cup-score">119</div><small class="cup-difference">(-11)</small></td></tr>
+            <tr><th>EQUIPO</th><th class="text-center"><span class="homeaway-result">IDA</span></th><th class="text-center"><span class="homeaway-result">VUELTA</span></th><th class="text-center"><span class="homeaway-result">TOTAL</span></th></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 3]"><img src="/assets/img/shields/150/luis.png" class="table-shield" alt="Porrua City"> Porrua City</a></td><td class="resultado resultado--lose-pre"><div class="cup-score">55</div><small class="cup-difference">(-8)</small></td><td class="resultado resultado--win-pre"><div class="cup-score">89</div><small class="cup-difference">(+20)</small></td><td class="resultado resultado--win"><div class="cup-score">144</div><small class="cup-difference">(+12)</small></td></tr>
+            <tr class="fila"><td class="equipo"><a [routerLink]="['/profile', 40]"><img src="/assets/img/shields/150/fernando_murube.png" class="table-shield" alt="Murube's Jr"> Murube's Jr</a></td><td class="resultado resultado--win-pre"><div class="cup-score">63</div><small class="cup-difference">(+8)</small></td><td class="resultado resultado--lose-pre"><div class="cup-score">69</div><small class="cup-difference">(-20)</small></td><td class="resultado resultado--lose"><div class="cup-score">132</div><small class="cup-difference">(-12)</small></td></tr>
+          </table>
+        </div>
+      }
+      @case ('final') {
+        <div class="h5 text-center mt-3">FINAL</div>
+        <div class="table-responsive">
+          <table class="cup-table">
+            <tr><td colspan="3" class="round-header"><i class="far fa-clock"></i> PARTIDO ÚNICO: 16/05/2021</td></tr>
+            <tr><th class="text-center">EQUIPO</th><th class="text-center"><span class="homeaway-result">TOTAL</span></th><th class="text-center">EQUIPO</th></tr>
+            <tr class="fila">
+              <td class="equipo text-center"><a [routerLink]="['/profile', 44]"><img src="/assets/img/shields/150/vicente2.png" class="table-shield" alt="DamageKKing"><div>DamageKKing</div></a></td>
+              <td class="resultado text-center"><div class="cup-score">83 - 75</div></td>
+              <td class="equipo text-center"><a [routerLink]="['/profile', 3]"><img src="/assets/img/shields/150/luis.png" class="table-shield" alt="Porrua City"><div>Porrua City</div></a></td>
+            </tr>
+          </table>
+        </div>
+      }
+    }
+  }
+}

@@ -1,1 +1,1955 @@
-<p>uefa works!</p>
+<div class="comp-header">
+  <img
+    src="/assets/img/cups/europa_league.png"
+    class="comp-cup-icon"
+    alt="Europa League"
+  />
+  EUROPA LEAGUE
+</div>
+<hr />
+
+@if (EuropaLeague[0].distance > 0) {
+  <div class="text-center mb-2">
+    <i class="far fa-clock"></i> Inicio:
+    <span id="countdown-EuropaLeague">0d 0h 0m 0s</span>
+  </div>
+}
+
+<div class="champ-winner">
+  <div class="champ-winner-title">CAMPEONA 2020-2021</div>
+  <a [routerLink]="['/profile', 19]">
+    <img
+      src="/assets/img/shields/150/mayfex.png"
+      class="winner-shield"
+      alt="CaZuVeNe"
+    />
+    <div class="h3">CaZuVeNe</div>
+  </a>
+</div>
+
+<div class="text-center mb-4">
+  <img
+    class="cruces-img"
+    src="/assets/img/competitions/uefa_cruces.jpg"
+    alt="Cruces Europa League"
+  />
+</div>
+
+<div class="h4 text-center mt-3">RESULTADOS</div>
+
+<div class="tab-bar">
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'dieciseisavos'"
+    (click)="activeTab.set('dieciseisavos')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i>
+    <span class="tab-label-long">DIECISEISAVOS</span
+    ><span class="tab-label-short">16º</span>
+  </button>
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'octavos'"
+    (click)="activeTab.set('octavos')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i>
+    <span class="tab-label-long">OCTAVOS</span
+    ><span class="tab-label-short">8º</span>
+  </button>
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'cuartos'"
+    (click)="activeTab.set('cuartos')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i>
+    <span class="tab-label-long">CUARTOS</span
+    ><span class="tab-label-short">4º</span>
+  </button>
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'semis'"
+    (click)="activeTab.set('semis')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i>
+    <span class="tab-label-long">SEMIFINALES</span
+    ><span class="tab-label-short">SE</span>
+  </button>
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'final'"
+    (click)="activeTab.set('final')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i>
+    <span class="tab-label-long">FINAL</span
+    ><span class="tab-label-short">FI</span>
+  </button>
+</div>
+
+@switch (activeTab()) {
+  @case ("dieciseisavos") {
+    <div class="h5 text-center mt-3">DIECISEISAVOS DE FINAL</div>
+    <div class="table-responsive">
+      <table class="cup-table">
+        <tr>
+          <td colspan="4" class="round-header">
+            <i class="far fa-clock"></i> IDA: 19/03/2021 - VUELTA: 04/04/2021
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 25]"
+              ><img
+                src="/assets/img/shields/150/raul.png"
+                class="table-shield"
+                alt="Dojo Cobra KAI"
+              />
+              Dojo Cobra KAI</a
+            >
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 0]"
+              ><img
+                src="/assets/img/shields/150/logo_opium_icono.png"
+                class="table-shield"
+                alt="-"
+              />
+              -</a
+            >
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 24]"
+              ><img
+                src="/assets/img/shields/150/nuria.png"
+                class="table-shield"
+                alt="Steaua no Beberé"
+              />
+              Steaua no Beberé</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">83</div>
+            <small class="cup-difference">(+46)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">91</div>
+            <small class="cup-difference">(+34)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">174</div>
+            <small class="cup-difference">(+80)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 11]"
+              ><img
+                src="/assets/img/shields/150/javi_nieto.png"
+                class="table-shield"
+                alt="Jabulani FC"
+              />
+              Jabulani FC</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">37</div>
+            <small class="cup-difference">(-46)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">57</div>
+            <small class="cup-difference">(-34)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">94</div>
+            <small class="cup-difference">(-80)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 32]"
+              ><img
+                src="/assets/img/shields/150/mario.png"
+                class="table-shield"
+                alt="Mario's Eleven"
+              />
+              Mario's Eleven</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">84</div>
+            <small class="cup-difference">(+62)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">78</div>
+            <small class="cup-difference">(+59)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">162</div>
+            <small class="cup-difference">(+121)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 17]"
+              ><img
+                src="/assets/img/shields/150/luis_roll.png"
+                class="table-shield"
+                alt="MOMPY'S CF"
+              />
+              MOMPY'S CF</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">22</div>
+            <small class="cup-difference">(-62)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">19</div>
+            <small class="cup-difference">(-59)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">41</div>
+            <small class="cup-difference">(-121)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 6]"
+              ><img
+                src="/assets/img/shields/150/adolfo.png"
+                class="table-shield"
+                alt="Galizano C.F."
+              />
+              Galizano C.F.</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">92</div>
+            <small class="cup-difference">(+19)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">75</div>
+            <small class="cup-difference">(+21)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">167</div>
+            <small class="cup-difference">(+40)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 18]"
+              ><img
+                src="/assets/img/shields/150/ezequiel.png"
+                class="table-shield"
+                alt="La Guardia Imperial"
+              />
+              La Guardia Imperial</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">73</div>
+            <small class="cup-difference">(-19)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">54</div>
+            <small class="cup-difference">(-21)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">127</div>
+            <small class="cup-difference">(-40)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 15]"
+              ><img
+                src="/assets/img/shields/150/juanan.png"
+                class="table-shield"
+                alt="Balompédica Porrua"
+              />
+              Balompédica Porrua</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">58</div>
+            <small class="cup-difference">(-19)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">66</div>
+            <small class="cup-difference">(-2)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">124</div>
+            <small class="cup-difference">(-21)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 43]"
+              ><img
+                src="/assets/img/shields/150/pablo_padilla.png"
+                class="table-shield"
+                alt="Tolo's Team"
+              />
+              Tolo's Team</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">77</div>
+            <small class="cup-difference">(+19)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">68</div>
+            <small class="cup-difference">(+2)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">145</div>
+            <small class="cup-difference">(+21)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 39]"
+              ><img
+                src="/assets/img/shields/150/pedro_cuesta.png"
+                class="table-shield"
+                alt="Pedreña City"
+              />
+              Pedreña City</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">84</div>
+            <small class="cup-difference">(+25)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">70</div>
+            <small class="cup-difference">(+22)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">154</div>
+            <small class="cup-difference">(+47)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 37]"
+              ><img
+                src="/assets/img/shields/150/dani_boltana.png"
+                class="table-shield"
+                alt="Buena FC"
+              />
+              Buena FC</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">59</div>
+            <small class="cup-difference">(-25)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">48</div>
+            <small class="cup-difference">(-22)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">107</div>
+            <small class="cup-difference">(-47)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 5]"
+              ><img
+                src="/assets/img/shields/150/javi_bsh.png"
+                class="table-shield"
+                alt="Club Juventud Cambados"
+              />
+              Club Juventud Cambados</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">77</div>
+            <small class="cup-difference">(+35)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">63</div>
+            <small class="cup-difference">(-2)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">140</div>
+            <small class="cup-difference">(+33)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 42]"
+              ><img
+                src="/assets/img/shields/150/nando.png"
+                class="table-shield"
+                alt="El Cártel de Kazoña"
+              />
+              El Cártel de Kazoña</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">42</div>
+            <small class="cup-difference">(-35)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">65</div>
+            <small class="cup-difference">(+2)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">107</div>
+            <small class="cup-difference">(-33)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 19]"
+              ><img
+                src="/assets/img/shields/150/mayfex.png"
+                class="table-shield"
+                alt="CaZuVeNe"
+              />
+              CaZuVeNe</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">79</div>
+            <small class="cup-difference">(+56)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">75</div>
+            <small class="cup-difference">(+48)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">154</div>
+            <small class="cup-difference">(+104)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 34]"
+              ><img
+                src="/assets/img/shields/150/danilo.png"
+                class="table-shield"
+                alt="WikiTeam"
+              />
+              WikiTeam</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">23</div>
+            <small class="cup-difference">(-56)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">27</div>
+            <small class="cup-difference">(-48)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">50</div>
+            <small class="cup-difference">(-104)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 35]"
+              ><img
+                src="/assets/img/shields/150/dani_negro.png"
+                class="table-shield"
+                alt="Santander Eagles"
+              />
+              Santander Eagles</a
+            >
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 0]"
+              ><img
+                src="/assets/img/shields/150/logo_opium_icono.png"
+                class="table-shield"
+                alt="-"
+              />
+              -</a
+            >
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">-</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 45]"
+              ><img
+                src="/assets/img/shields/150/vanessa.png"
+                class="table-shield"
+                alt="Lil'murderGirl"
+              />
+              Lil'murderGirl</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">83</div>
+            <small class="cup-difference">(+24)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">65</div>
+            <small class="cup-difference">(-2)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">148</div>
+            <small class="cup-difference">(+22)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 47]"
+              ><img
+                src="/assets/img/shields/150/juanjo.png"
+                class="table-shield"
+                alt="Juanjotti Team"
+              />
+              Juanjotti Team</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">59</div>
+            <small class="cup-difference">(-24)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">67</div>
+            <small class="cup-difference">(+2)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">126</div>
+            <small class="cup-difference">(-22)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 29]"
+              ><img
+                src="/assets/img/shields/150/david_munoz.png"
+                class="table-shield"
+                alt="New Tikis"
+              />
+              New Tikis</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">69</div>
+            <small class="cup-difference">(-5)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">45</div>
+            <small class="cup-difference">(-10)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">114</div>
+            <small class="cup-difference">(-15)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 26]"
+              ><img
+                src="/assets/img/shields/150/serious.png"
+                class="table-shield"
+                alt="Meneillos"
+              />
+              Meneillos</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">74</div>
+            <small class="cup-difference">(+5)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">55</div>
+            <small class="cup-difference">(+10)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">129</div>
+            <small class="cup-difference">(+15)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 4]"
+              ><img
+                src="/assets/img/shields/150/javi_monte.png"
+                class="table-shield"
+                alt="C.D. Monte"
+              />
+              C.D. Monte</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">89</div>
+            <small class="cup-difference">(+34)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">88</div>
+            <small class="cup-difference">(+32)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">177</div>
+            <small class="cup-difference">(+66)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 27]"
+              ><img
+                src="/assets/img/shields/150/daniel_gonzalez.png"
+                class="table-shield"
+                alt="Caracas FC"
+              />
+              Caracas FC</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">55</div>
+            <small class="cup-difference">(-34)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">56</div>
+            <small class="cup-difference">(-32)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">111</div>
+            <small class="cup-difference">(-66)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 30]"
+              ><img
+                src="/assets/img/shields/150/dani_lozano.png"
+                class="table-shield"
+                alt="NewTeam"
+              />
+              NewTeam</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">90</div>
+            <small class="cup-difference">(+36)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">57</div>
+            <small class="cup-difference">(+26)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">147</div>
+            <small class="cup-difference">(+62)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 21]"
+              ><img
+                src="/assets/img/shields/150/zea.png"
+                class="table-shield"
+                alt="Zea 1+8 FC"
+              />
+              Zea 1+8 FC</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">54</div>
+            <small class="cup-difference">(-36)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">31</div>
+            <small class="cup-difference">(-26)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">85</div>
+            <small class="cup-difference">(-62)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 16]"
+              ><img
+                src="/assets/img/shields/150/ovidiu.png"
+                class="table-shield"
+                alt="Ovi Dan"
+              />
+              Ovi Dan</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">83</div>
+            <small class="cup-difference">(+14)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">60</div>
+            <small class="cup-difference">(+1)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">143</div>
+            <small class="cup-difference">(+15)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 46]"
+              ><img
+                src="/assets/img/shields/150/javi.png"
+                class="table-shield"
+                alt="Enzo team"
+              />
+              Enzo team</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">69</div>
+            <small class="cup-difference">(-14)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">59</div>
+            <small class="cup-difference">(-1)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">128</div>
+            <small class="cup-difference">(-15)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 33]"
+              ><img
+                src="/assets/img/shields/150/paloma.png"
+                class="table-shield"
+                alt="Super Palomba"
+              />
+              Super Palomba</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">75</div>
+            <small class="cup-difference">(+7)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">65</div>
+            <small class="cup-difference">(+29)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">140</div>
+            <small class="cup-difference">(+36)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 14]"
+              ><img
+                src="/assets/img/shields/150/lorea.png"
+                class="table-shield"
+                alt="Jambo Jambo"
+              />
+              Jambo Jambo</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">68</div>
+            <small class="cup-difference">(-7)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">36</div>
+            <small class="cup-difference">(-29)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">104</div>
+            <small class="cup-difference">(-36)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 1]"
+              ><img
+                src="/assets/img/shields/150/che.png"
+                class="table-shield"
+                alt="Amunt Che"
+              />
+              Amunt Che</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">93</div>
+            <small class="cup-difference">(+61)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">74</div>
+            <small class="cup-difference">(+32)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">167</div>
+            <small class="cup-difference">(+93)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 10]"
+              ><img
+                src="/assets/img/shields/150/will.png"
+                class="table-shield"
+                alt="Williessous"
+              />
+              Williessous</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">32</div>
+            <small class="cup-difference">(-61)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">42</div>
+            <small class="cup-difference">(-32)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">74</div>
+            <small class="cup-difference">(-93)</small>
+          </td>
+        </tr>
+      </table>
+    </div>
+  }
+
+  @case ("octavos") {
+    <div class="h5 text-center mt-3">OCTAVOS DE FINAL</div>
+    <div class="table-responsive">
+      <table class="cup-table">
+        <tr>
+          <td colspan="4" class="round-header">
+            <i class="far fa-clock"></i> IDA: 11/04/2021 - VUELTA: 18/04/2021
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 25]"
+              ><img
+                src="/assets/img/shields/150/raul.png"
+                class="table-shield"
+                alt="Dojo Cobra KAI"
+              />
+              Dojo Cobra KAI</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">68</div>
+            <small class="cup-difference">(-15)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">77</div>
+            <small class="cup-difference">(+13)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">145</div>
+            <small class="cup-difference">(-2)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 24]"
+              ><img
+                src="/assets/img/shields/150/nuria.png"
+                class="table-shield"
+                alt="Steaua no Beberé"
+              />
+              Steaua no Beberé</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">83</div>
+            <small class="cup-difference">(+15)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">64</div>
+            <small class="cup-difference">(-13)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">147</div>
+            <small class="cup-difference">(+2)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 32]"
+              ><img
+                src="/assets/img/shields/150/mario.png"
+                class="table-shield"
+                alt="Mario's Eleven"
+              />
+              Mario's Eleven</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">75</div>
+            <small class="cup-difference">(+5)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">79</div>
+            <small class="cup-difference">(+9)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">154</div>
+            <small class="cup-difference">(+14)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 6]"
+              ><img
+                src="/assets/img/shields/150/adolfo.png"
+                class="table-shield"
+                alt="Galizano C.F."
+              />
+              Galizano C.F.</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">70</div>
+            <small class="cup-difference">(-5)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">70</div>
+            <small class="cup-difference">(-9)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">140</div>
+            <small class="cup-difference">(-14)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 43]"
+              ><img
+                src="/assets/img/shields/150/pablo_padilla.png"
+                class="table-shield"
+                alt="Tolo's Team"
+              />
+              Tolo's Team</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">59</div>
+            <small class="cup-difference">(-14)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">41</div>
+            <small class="cup-difference">(+15)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">100</div>
+            <small class="cup-difference">(+1)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 39]"
+              ><img
+                src="/assets/img/shields/150/pedro_cuesta.png"
+                class="table-shield"
+                alt="Pedreña City"
+              />
+              Pedreña City</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">73</div>
+            <small class="cup-difference">(+14)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">26</div>
+            <small class="cup-difference">(-15)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">99</div>
+            <small class="cup-difference">(-1)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 5]"
+              ><img
+                src="/assets/img/shields/150/javi_bsh.png"
+                class="table-shield"
+                alt="Club Juventud Cambados"
+              />
+              Club Juventud Cambados</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">59</div>
+            <small class="cup-difference">(-18)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">41</div>
+            <small class="cup-difference">(-48)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">100</div>
+            <small class="cup-difference">(-66)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 19]"
+              ><img
+                src="/assets/img/shields/150/mayfex.png"
+                class="table-shield"
+                alt="CaZuVeNe"
+              />
+              CaZuVeNe</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">77</div>
+            <small class="cup-difference">(+18)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">89</div>
+            <small class="cup-difference">(+48)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">166</div>
+            <small class="cup-difference">(+66)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 35]"
+              ><img
+                src="/assets/img/shields/150/dani_negro.png"
+                class="table-shield"
+                alt="Santander Eagles"
+              />
+              Santander Eagles</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">63</div>
+            <small class="cup-difference">(-25)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">65</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">128</div>
+            <small class="cup-difference">(-25)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 45]"
+              ><img
+                src="/assets/img/shields/150/vanessa.png"
+                class="table-shield"
+                alt="Lil'murderGirl"
+              />
+              Lil'murderGirl</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">88</div>
+            <small class="cup-difference">(+25)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">65</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">153</div>
+            <small class="cup-difference">(+25)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 26]"
+              ><img
+                src="/assets/img/shields/150/serious.png"
+                class="table-shield"
+                alt="Meneillos"
+              />
+              Meneillos</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">48</div>
+            <small class="cup-difference">(-31)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">26</div>
+            <small class="cup-difference">(-54)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">74</div>
+            <small class="cup-difference">(-85)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 4]"
+              ><img
+                src="/assets/img/shields/150/javi_monte.png"
+                class="table-shield"
+                alt="C.D. Monte"
+              />
+              C.D. Monte</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">79</div>
+            <small class="cup-difference">(+31)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">80</div>
+            <small class="cup-difference">(+54)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">159</div>
+            <small class="cup-difference">(+85)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 30]"
+              ><img
+                src="/assets/img/shields/150/dani_lozano.png"
+                class="table-shield"
+                alt="NewTeam"
+              />
+              NewTeam</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">51</div>
+            <small class="cup-difference">(+6)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">78</div>
+            <small class="cup-difference">(+21)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">129</div>
+            <small class="cup-difference">(+27)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 16]"
+              ><img
+                src="/assets/img/shields/150/ovidiu.png"
+                class="table-shield"
+                alt="Ovi Dan"
+              />
+              Ovi Dan</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">45</div>
+            <small class="cup-difference">(-6)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">57</div>
+            <small class="cup-difference">(-21)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">102</div>
+            <small class="cup-difference">(-27)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 33]"
+              ><img
+                src="/assets/img/shields/150/paloma.png"
+                class="table-shield"
+                alt="Super Palomba"
+              />
+              Super Palomba</a
+            >
+          </td>
+          <td class="resultado">
+            <div class="cup-score">67</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">86</div>
+            <small class="cup-difference">(+14)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">153</div>
+            <small class="cup-difference">(+14)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 1]"
+              ><img
+                src="/assets/img/shields/150/che.png"
+                class="table-shield"
+                alt="Amunt Che"
+              />
+              Amunt Che</a
+            >
+          </td>
+          <td class="resultado">
+            <div class="cup-score">67</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">72</div>
+            <small class="cup-difference">(-14)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">139</div>
+            <small class="cup-difference">(-14)</small>
+          </td>
+        </tr>
+      </table>
+    </div>
+  }
+
+  @case ("cuartos") {
+    <div class="h5 text-center mt-3">CUARTOS DE FINAL</div>
+    <div class="table-responsive">
+      <table class="cup-table">
+        <tr>
+          <td colspan="4" class="round-header">
+            <i class="far fa-clock"></i> IDA: 21/04/2021 - VUELTA: 25/04/2021
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 24]"
+              ><img
+                src="/assets/img/shields/150/nuria.png"
+                class="table-shield"
+                alt="Steaua no Beberé"
+              />
+              Steaua no Beberé</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">91</div>
+            <small class="cup-difference">(+32)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">61</div>
+            <small class="cup-difference">(-1)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">152</div>
+            <small class="cup-difference">(+31)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 32]"
+              ><img
+                src="/assets/img/shields/150/mario.png"
+                class="table-shield"
+                alt="Mario's Eleven"
+              />
+              Mario's Eleven</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">59</div>
+            <small class="cup-difference">(-32)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">62</div>
+            <small class="cup-difference">(+1)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">121</div>
+            <small class="cup-difference">(-31)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 43]"
+              ><img
+                src="/assets/img/shields/150/pablo_padilla.png"
+                class="table-shield"
+                alt="Tolo's Team"
+              />
+              Tolo's Team</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">44</div>
+            <small class="cup-difference">(-45)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">51</div>
+            <small class="cup-difference">(-8)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">95</div>
+            <small class="cup-difference">(-53)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 19]"
+              ><img
+                src="/assets/img/shields/150/mayfex.png"
+                class="table-shield"
+                alt="CaZuVeNe"
+              />
+              CaZuVeNe</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">89</div>
+            <small class="cup-difference">(+45)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">59</div>
+            <small class="cup-difference">(+8)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">148</div>
+            <small class="cup-difference">(+53)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 45]"
+              ><img
+                src="/assets/img/shields/150/vanessa.png"
+                class="table-shield"
+                alt="Lil'murderGirl"
+              />
+              Lil'murderGirl</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">84</div>
+            <small class="cup-difference">(-8)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">63</div>
+            <small class="cup-difference">(+10)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">147</div>
+            <small class="cup-difference">(+2)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 4]"
+              ><img
+                src="/assets/img/shields/150/javi_monte.png"
+                class="table-shield"
+                alt="C.D. Monte"
+              />
+              C.D. Monte</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">92</div>
+            <small class="cup-difference">(+8)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">53</div>
+            <small class="cup-difference">(-10)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">145</div>
+            <small class="cup-difference">(-2)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 30]"
+              ><img
+                src="/assets/img/shields/150/dani_lozano.png"
+                class="table-shield"
+                alt="NewTeam"
+              />
+              NewTeam</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">86</div>
+            <small class="cup-difference">(+21)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">48</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">134</div>
+            <small class="cup-difference">(+21)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 33]"
+              ><img
+                src="/assets/img/shields/150/paloma.png"
+                class="table-shield"
+                alt="Super Palomba"
+              />
+              Super Palomba</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">65</div>
+            <small class="cup-difference">(-21)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">48</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">113</div>
+            <small class="cup-difference">(-21)</small>
+          </td>
+        </tr>
+      </table>
+    </div>
+  }
+
+  @case ("semis") {
+    <div class="h5 text-center mt-3">SEMIFINALES</div>
+    <div class="table-responsive">
+      <table class="cup-table">
+        <tr>
+          <td colspan="4" class="round-header">
+            <i class="far fa-clock"></i> IDA: 02/05/2021 - VUELTA: 09/05/2021
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 24]"
+              ><img
+                src="/assets/img/shields/150/nuria.png"
+                class="table-shield"
+                alt="Steaua no Beberé"
+              />
+              Steaua no Beberé</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">60</div>
+            <small class="cup-difference">(-7)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">53</div>
+            <small class="cup-difference">(+7)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">113</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 19]"
+              ><img
+                src="/assets/img/shields/150/mayfex.png"
+                class="table-shield"
+                alt="CaZuVeNe"
+              />
+              CaZuVeNe</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">67</div>
+            <small class="cup-difference">(+7)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">46</div>
+            <small class="cup-difference">(-7)</small>
+          </td>
+          <td class="resultado">
+            <div class="cup-score">113</div>
+            <small class="cup-difference">(+0)</small>
+          </td>
+        </tr>
+
+        <tr>
+          <th>EQUIPO</th>
+          <th class="text-center"><span class="homeaway-result">IDA</span></th>
+          <th class="text-center">
+            <span class="homeaway-result">VUELTA</span>
+          </th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 45]"
+              ><img
+                src="/assets/img/shields/150/vanessa.png"
+                class="table-shield"
+                alt="Lil'murderGirl"
+              />
+              Lil'murderGirl</a
+            >
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">80</div>
+            <small class="cup-difference">(+28)</small>
+          </td>
+          <td class="resultado resultado--win-pre">
+            <div class="cup-score">65</div>
+            <small class="cup-difference">(+18)</small>
+          </td>
+          <td class="resultado resultado--win">
+            <div class="cup-score">145</div>
+            <small class="cup-difference">(+46)</small>
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo">
+            <a [routerLink]="['/profile', 30]"
+              ><img
+                src="/assets/img/shields/150/dani_lozano.png"
+                class="table-shield"
+                alt="NewTeam"
+              />
+              NewTeam</a
+            >
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">52</div>
+            <small class="cup-difference">(-28)</small>
+          </td>
+          <td class="resultado resultado--lose-pre">
+            <div class="cup-score">47</div>
+            <small class="cup-difference">(-18)</small>
+          </td>
+          <td class="resultado resultado--lose">
+            <div class="cup-score">99</div>
+            <small class="cup-difference">(-46)</small>
+          </td>
+        </tr>
+      </table>
+    </div>
+  }
+
+  @case ("final") {
+    <div class="h5 text-center mt-3">FINAL</div>
+    <div class="table-responsive">
+      <table class="cup-table">
+        <tr>
+          <td colspan="3" class="round-header">
+            <i class="far fa-clock"></i> PARTIDO ÚNICO: 12/05/2021
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center">EQUIPO</th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+          <th class="text-center">EQUIPO</th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 19]"
+              ><img
+                src="/assets/img/shields/150/mayfex.png"
+                class="table-shield"
+                alt="CaZuVeNe"
+              />
+              <div>CaZuVeNe</div></a
+            >
+          </td>
+          <td class="resultado text-center">
+            <div class="cup-score">91 - 89</div>
+          </td>
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 45]"
+              ><img
+                src="/assets/img/shields/150/vanessa.png"
+                class="table-shield"
+                alt="Lil'murderGirl"
+              />
+              <div>Lil'murderGirl</div></a
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+  }
+}

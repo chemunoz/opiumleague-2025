@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { UefaComponent } from './uefa.component';
 
@@ -9,6 +10,7 @@ describe('UefaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [UefaComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UefaComponent);

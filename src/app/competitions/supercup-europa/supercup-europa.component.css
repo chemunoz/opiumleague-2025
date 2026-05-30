@@ -1,0 +1,123 @@
+.comp-header {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.comp-cup-icon {
+  height: 40px;
+  vertical-align: bottom;
+}
+
+.champ-winner {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.champ-winner-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.champ-winner a {
+  text-decoration: none;
+  color: inherit;
+}
+.winner-shield {
+  display: block;
+  margin: 0 auto 0.25rem;
+}
+
+.text-center {
+  text-align: center;
+}
+.h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.75rem 0 0.5rem;
+}
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.cup-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.cup-table th,
+.cup-table td {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #dee2e6;
+}
+
+.cup-table th {
+  background: #e8e8e8;
+  font-weight: 700;
+}
+
+.table-shield {
+  height: 24px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.equipo a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.resultado {
+  text-align: center;
+}
+
+.cup-score {
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.homeaway-result {
+  display: inline-block;
+  background: #555;
+  color: #fff;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+.round-header {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.fila {
+  background: #fafafa;
+}
+
+.cruces-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

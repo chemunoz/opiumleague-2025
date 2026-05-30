@@ -1,1 +1,165 @@
-<p>supercup-opium works!</p>
+<div class="comp-header">SUPERCOPA OPIUM</div>
+<hr />
+
+@if (SupercupOpium[0].distance > 0) {
+  <div class="text-center mb-2">
+    <i class="far fa-clock"></i> Inicio:
+    <span id="countdown-SupercupOpium">0d 0h 0m 0s</span>
+  </div>
+}
+
+<div class="champ-winner">
+  <div class="champ-winner-title">CAMPEÓN 2019-2020</div>
+  <a [routerLink]="['/profile', 4]">
+    <img
+      src="/assets/img/shields/150/javi_monte.png"
+      class="winner-shield"
+      alt="C.D. Monte"
+    />
+    <div>C.D. Monte</div>
+  </a>
+</div>
+
+<div class="text-center mb-4">
+  <img
+    class="cruces-img"
+    src="/assets/img/competitions/supercup_opium_cruces.jpg"
+    alt="Cruces Supercopa Opium"
+  />
+</div>
+
+<div class="h4 text-center mt-3">RESULTADOS</div>
+
+<div class="tab-bar">
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'semis'"
+    (click)="activeTab.set('semis')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i> SEMIFINALES
+  </button>
+  <button
+    class="tab-btn"
+    [class.active]="activeTab() === 'final'"
+    (click)="activeTab.set('final')"
+  >
+    <i class="fas fa-expand-arrows-alt"></i> FINAL
+  </button>
+</div>
+
+@switch (activeTab()) {
+  @case ("semis") {
+    <div class="h5 text-center mt-3">SEMIFINALES</div>
+    <div class="table-responsive">
+      <table class="cup-table">
+        <tr>
+          <td colspan="3" class="round-header">
+            <i class="far fa-clock"></i> PARTIDO ÚNICO: 20/01/2021
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center">EQUIPO</th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+          <th class="text-center">EQUIPO</th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 3]"
+              ><img
+                src="/assets/img/shields/150/luis.png"
+                class="table-shield"
+                alt="Porrua City"
+              />
+              <div>Porrua City</div></a
+            >
+          </td>
+          <td class="resultado text-center">
+            <div class="cup-score"><small>62 - 83</small></div>
+          </td>
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 6]"
+              ><img
+                src="/assets/img/shields/150/adolfo.png"
+                class="table-shield"
+                alt="Galizano C.F."
+              />
+              <div>Galizano C.F.</div></a
+            >
+          </td>
+        </tr>
+        <tr class="fila">
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 31]"
+              ><img
+                src="/assets/img/shields/150/javichu.png"
+                class="table-shield"
+                alt="Racing Hoznayo"
+              />
+              <div>Racing Hoznayo</div></a
+            >
+          </td>
+          <td class="resultado text-center">
+            <div class="cup-score"><small>67 - 77</small></div>
+          </td>
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 4]"
+              ><img
+                src="/assets/img/shields/150/javi_monte.png"
+                class="table-shield"
+                alt="C.D. Monte"
+              />
+              <div>C.D. Monte</div></a
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+  }
+
+  @case ("final") {
+    <div class="h5 text-center mt-3">FINAL</div>
+    <div class="table-responsive">
+      <table class="cup-table">
+        <tr>
+          <td colspan="3" class="round-header">
+            <i class="far fa-clock"></i> PARTIDO ÚNICO: 24/01/2021
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center">EQUIPO</th>
+          <th class="text-center">
+            <span class="homeaway-result">TOTAL</span>
+          </th>
+          <th class="text-center">EQUIPO</th>
+        </tr>
+        <tr class="fila">
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 6]"
+              ><img
+                src="/assets/img/shields/150/adolfo.png"
+                class="table-shield"
+                alt="Galizano C.F."
+              />
+              <div>Galizano C.F.</div></a
+            >
+          </td>
+          <td class="resultado text-center">
+            <div class="cup-score"><small>88 - 90</small></div>
+          </td>
+          <td class="equipo text-center">
+            <a [routerLink]="['/profile', 4]"
+              ><img
+                src="/assets/img/shields/150/javi_monte.png"
+                class="table-shield"
+                alt="C.D. Monte"
+              />
+              <div>C.D. Monte</div></a
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+  }
+}

@@ -1,1 +1,77 @@
-<p>supercup-europa works!</p>
+<div class="comp-header">
+  <img
+    src="/assets/img/cups/supercopa_europa.png"
+    class="comp-cup-icon"
+    alt="Supercopa Europa"
+  />
+  SUPERCOPA EUROPA
+</div>
+<hr />
+
+@if (SupercupEuropa[0].distance > 0) {
+  <div class="text-center mb-2">
+    <i class="far fa-clock"></i> Inicio:
+    <span id="countdown-SupercupEuropa">0d 0h 0m 0s</span>
+  </div>
+}
+
+<div class="champ-winner">
+  <div class="champ-winner-title">CAMPEÓN 2019-2020</div>
+  <a [routerLink]="['/profile', 3]">
+    <img
+      src="/assets/img/shields/150/luis.png"
+      class="winner-shield"
+      alt="Porrua City"
+    />
+    <div>Porrua City</div>
+  </a>
+</div>
+
+<div class="text-center mb-4">
+  <img
+    class="cruces-img"
+    src="/assets/img/competitions/supercup_europa_cruces.jpg"
+    alt="Cruces Supercopa Europa"
+  />
+</div>
+
+<div class="h5 text-center my-3">FINAL</div>
+<div class="table-responsive">
+  <table class="cup-table">
+    <tr>
+      <td colspan="3" class="round-header">
+        <i class="far fa-clock"></i> PARTIDO ÚNICO: 20/09/2020
+      </td>
+    </tr>
+    <tr>
+      <th class="text-center">EQUIPO</th>
+      <th class="text-center"><span class="homeaway-result">TOTAL</span></th>
+      <th class="text-center">EQUIPO</th>
+    </tr>
+    <tr class="fila">
+      <td class="equipo text-center">
+        <a [routerLink]="['/profile', 3]"
+          ><img
+            src="/assets/img/shields/150/luis.png"
+            class="table-shield"
+            alt="Porrua City"
+          />
+          <div>Porrua City</div></a
+        >
+      </td>
+      <td class="resultado text-center">
+        <div class="cup-score">68 - 47</div>
+      </td>
+      <td class="equipo text-center">
+        <a [routerLink]="['/profile', 6]"
+          ><img
+            src="/assets/img/shields/150/adolfo.png"
+            class="table-shield"
+            alt="Galizano C.F."
+          />
+          <div>Galizano C.F.</div></a
+        >
+      </td>
+    </tr>
+  </table>
+</div>

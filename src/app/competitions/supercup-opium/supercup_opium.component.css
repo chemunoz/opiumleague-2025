@@ -27,10 +27,6 @@
   text-decoration: none;
   color: inherit;
 }
-.winner-shield {
-  display: block;
-  margin: 0 auto 0.25rem;
-}
 .champ-winner .h3 {
   font-size: 1.4rem;
   font-weight: 700;
